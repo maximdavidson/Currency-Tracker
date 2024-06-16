@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from '@components/Header/Header';
+import Stocks from './components/Stocks/Stocks';
 
 function Home() {
   return (
     <div>
-      <Header />
+      <Stocks />
     </div>
   );
 }
