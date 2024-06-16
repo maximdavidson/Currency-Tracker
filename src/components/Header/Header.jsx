@@ -1,7 +1,7 @@
 import React from 'react';
 
-import logo from '../../assets/logo.png';
-import switchImg from '../../assets/switch.png';
+import logo from '@assets/logo.png';
+import switchImg from '@assets/switch.png';
 import { StyledLink, Switch, SwitchImg, Ul, Wrapper } from './styles';
 
 function Header() {

@@ -10,6 +10,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    endOfLine: 'off',
   },
   extends: ['airbnb', 'prettier'],
   plugins: [
@@ -24,5 +25,18 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'simple-import-sort/imports': 'error',
     'prettier/prettier': ['error'],
+  },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@components', './src/components'],
+          ['@assets', './src/assets'],
+          ['@styles', './src/styles'],
+          ['@utils', './src/utils'],
+        ],
+        extensions: ['.js', '.jsx', '.json'],
+      },
+    },
   },
 };

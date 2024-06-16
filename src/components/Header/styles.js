@@ -7,7 +7,7 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.7;
   }
 `;
 

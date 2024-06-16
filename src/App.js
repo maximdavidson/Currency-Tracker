@@ -4,14 +4,17 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import Header from './components/Header/Header';
+import ErrorBoundary from './utils/ErrorBoundary';
 
 function App() {
   return (
-    <Router>
-      <div>
-        <Header />
-      </div>
-    </Router>
+    <ErrorBoundary>
+      <Router>
+        <div>
+          <Header />
+        </div>
+      </Router>
+    </ErrorBoundary>
   );
 }
 
