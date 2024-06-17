@@ -17,7 +17,6 @@ export const Image = styled.img``;
 
 export const Cards = styled.div`
   margin-top: 50px;
-  margin-bottom: 86.73px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 184px;
