@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useCurrencyRates from './useCurrencyRates';
 import CurrencyCard from './CurrencyCard';
+import CurrencyModal from '../CurrencyModal/CurrencyModal';
 import rectangle from '@assets/Rectangle.png';
 import dollar from '@assets/Dollar.png';
 import cdollar from '@assets/CanadianDollar.png';
@@ -41,7 +42,16 @@ const currencyData = [
 ];
 
 const Quotes = () => {
-  const currencyRates = useCurrencyRates();
+  const { currencyRates } = useCurrencyRates();
+  const [selectedCurrency, setSelectedCurrency] = useState(null);
+
+  const openModal = (currency) => {
+    setSelectedCurrency(currency);
+  };
+
+  const closeModal = () => {
+    setSelectedCurrency(null);
+  };
 
   return (
     <Container>
@@ -56,10 +66,19 @@ const Quotes = () => {
               alt={currency.alt}
               name={currency.name}
               rate={currencyRates[currency.key]}
+              onClick={() => openModal(currency)}
             />
           ))}
         </Cards>
       </Wrapper>
+      {selectedCurrency && (
+        <CurrencyModal
+          isOpen={!!selectedCurrency}
+          onClose={closeModal}
+          currency={selectedCurrency}
+          currencyRates={currencyRates}
+        />
+      )}
     </Container>
   );
 };

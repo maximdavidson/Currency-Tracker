@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardImage, Text, Name, Rate } from './styles';
 
-const CurrencyCard = ({ image, alt, name, rate }) => {
-  const formatRate = (rate) => (rate ? rate.value.toFixed(2) : 'Loading...');
+const CurrencyCard = ({ image, alt, name, rate, onClick }) => {
+  const formatRate = (rate) => (rate ? rate.value : 'Loading...');
 
   return (
-    <Card>
+    <Card onClick={onClick}>
       <CardImage src={image} alt={alt} />
       <Text>
         <Name>
@@ -23,6 +23,7 @@ CurrencyCard.propTypes = {
   alt: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   rate: PropTypes.object,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default CurrencyCard;

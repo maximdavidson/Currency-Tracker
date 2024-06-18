@@ -1,4 +1,5 @@
 import React from 'react';
+import useCurrencyRates from '@pages/Home/components/Quotes/useCurrencyRates';
 
 import logo from '@assets/logo.png';
 import switchImg from '@assets/switch.png';
@@ -17,6 +18,17 @@ import {
 } from './styles';
 
 function Header() {
+  const { lastUpdate } = useCurrencyRates();
+
+  const formatDate = (date) => {
+    if (!date) return 'Loading...';
+    return date.toLocaleString('en-US', {
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+    });
+  };
+
   return (
     <header>
       <Container>
@@ -58,7 +70,7 @@ function Header() {
       </HeaderImgWrap>
       <LastUp>
         <img src={circleImg} alt="Image" />
-        <Text>Last updated at 11:59pm</Text>
+        <Text>Last updated at {formatDate(lastUpdate)}</Text>
       </LastUp>
     </header>
   );

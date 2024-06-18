@@ -2,16 +2,26 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const useCurrencyRates = () => {
-  const [currencyRates, setCurrencyRates] = useState({
-    USD: null,
-    CAD: null,
-    AUD: null,
-    EUR: null,
-    GBP: null,
-    ARS: null,
-    JPY: null,
-    CNY: null,
-    BTC: null,
+  const [currencyRates, setCurrencyRates] = useState(() => {
+    const cachedRates = localStorage.getItem('currentRates');
+    return cachedRates
+      ? JSON.parse(cachedRates)
+      : {
+          USD: null,
+          CAD: null,
+          AUD: null,
+          EUR: null,
+          GBP: null,
+          ARS: null,
+          JPY: null,
+          CNY: null,
+          BTC: null,
+        };
+  });
+
+  const [lastUpdate, setLastUpdate] = useState(() => {
+    const cachedLastUpdate = localStorage.getItem('lastUpdate');
+    return cachedLastUpdate ? new Date(cachedLastUpdate) : null;
   });
 
   useEffect(() => {
@@ -21,7 +31,7 @@ const useCurrencyRates = () => {
           'https://api.currencyapi.com/v3/latest',
           {
             params: {
-              apikey: 'cur_live_n4N844Idm8oo2Y3Kj1VIuCWN1umghP8Gyd8jfWCK',
+              apikey: 'cur_live_o2rbtemJUuWv2CbvVXaz3Gmdfnh0HcRR1cHB4XaR',
               base_currency: 'USD',
             },
           },
@@ -41,15 +51,28 @@ const useCurrencyRates = () => {
           CNY: rates.CNY,
           BTC: rates.BTC,
         });
+
+        setLastUpdate(new Date());
+        localStorage.setItem('currentRates', JSON.stringify(rates));
+        localStorage.setItem('lastUpdate', new Date());
       } catch (error) {
         console.error('Error fetching the currency data', error);
       }
     };
 
-    fetchData();
+    const oneHour = 60 * 60 * 1000;
+    const now = new Date();
+    const isDataOutdated = !lastUpdate || now - new Date(lastUpdate) > oneHour;
+
+    if (isDataOutdated) {
+      fetchData();
+    }
+
+    const interval = setInterval(fetchData, 3600000);
+    return () => clearInterval(interval);
   }, []);
 
-  return currencyRates;
+  return { currencyRates, lastUpdate };
 };
 
 export default useCurrencyRates;
