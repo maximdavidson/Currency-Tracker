@@ -35,6 +35,7 @@ module.exports = {
           ['@styles', './src/styles'],
           ['@utils', './src/utils'],
           ['@pages', './src/pages'],
+          ['@theme', './src/theme'],
         ],
         extensions: ['.js', '.jsx', '.json'],
       },

@@ -1,6 +1,7 @@
 import React from 'react';
 import useCurrencyRates from '@pages/Home/components/Quotes/useCurrencyRates';
 
+import { useTheme } from '@theme/ThemeContext';
 import logo from '@assets/logo.png';
 import switchImg from '@assets/switch.png';
 import headerImg from '@assets/Header.png';
@@ -19,6 +20,7 @@ import {
 
 function Header() {
   const { lastUpdate } = useCurrencyRates();
+  const { toggleTheme } = useTheme();
 
   const formatDate = (date) => {
     if (!date) return 'Loading...';
@@ -60,7 +62,7 @@ function Header() {
               </li>
             </Ul>
           </nav>
-          <Switch>
+          <Switch onClick={toggleTheme}>
             <SwitchImg src={switchImg} alt="switch" />
           </Switch>
         </Wrapper>

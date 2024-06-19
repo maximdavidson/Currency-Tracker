@@ -52,25 +52,27 @@ const useCurrencyRates = () => {
           BTC: rates.BTC,
         });
 
-        setLastUpdate(new Date());
+        const now = new Date();
+        setLastUpdate(now);
         localStorage.setItem('currentRates', JSON.stringify(rates));
-        localStorage.setItem('lastUpdate', new Date());
+        localStorage.setItem('lastUpdate', now.toISOString());
       } catch (error) {
         console.error('Error fetching the currency data', error);
       }
     };
 
-    const oneHour = 60 * 60 * 1000;
+    const twelveHours = 12 * 60 * 60 * 1000;
     const now = new Date();
-    const isDataOutdated = !lastUpdate || now - new Date(lastUpdate) > oneHour;
+    const isDataOutdated =
+      !lastUpdate || now - new Date(lastUpdate) > twelveHours;
 
     if (isDataOutdated) {
       fetchData();
     }
 
-    const interval = setInterval(fetchData, 3600000);
+    const interval = setInterval(fetchData, twelveHours);
     return () => clearInterval(interval);
-  }, []);
+  }, [lastUpdate]);
 
   return { currencyRates, lastUpdate };
 };

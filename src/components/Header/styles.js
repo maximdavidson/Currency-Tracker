@@ -38,6 +38,7 @@ export const Ul = styled.ul`
   align-items: center;
   gap: 115px;
   padding-left: 285px;
+  list-style-type: none;
 `;
 
 export const LastUp = styled.div`
