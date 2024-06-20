@@ -42,24 +42,16 @@ function Header() {
           <nav>
             <Ul>
               <li>
-                <StyledLink className="link" to="/">
-                  Home
-                </StyledLink>
+                <StyledLink to="/">Home</StyledLink>
               </li>
               <li>
-                <StyledLink className="link" to="/timeline">
-                  Timeline
-                </StyledLink>
+                <StyledLink to="/timeline">Timeline</StyledLink>
               </li>
               <li>
-                <StyledLink className="link" to="/bank-card">
-                  Bank card
-                </StyledLink>
+                <StyledLink to="/bank-card">Bank card</StyledLink>
               </li>
               <li>
-                <StyledLink className="link" to="/contacts">
-                  Contacts
-                </StyledLink>
+                <StyledLink to="/contacts">Contacts</StyledLink>
               </li>
             </Ul>
           </nav>

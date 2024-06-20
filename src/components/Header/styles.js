@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 
 // eslint-disable-next-line import/prefer-default-export
@@ -7,7 +7,7 @@ export const Container = styled.div`
   padding-right: 120px;
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(NavLink)`
   color: white;
   text-decoration: none;
 

@@ -7,6 +7,7 @@ import { ThemeProvider } from './theme/ThemeContext';
 import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
 import Timeline from './pages/Timeline/Timeline';
+import Contacts from './pages/Contacts/Contacts';
 import ErrorBoundary from './utils/ErrorBoundary';
 import Footer from './components/Footer/Footer';
 
@@ -16,11 +17,10 @@ function App() {
       <ThemeProvider>
         <Header />
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/timeline" element={<Timeline />} />
-          {/*
-        <Route path="/bank-card" element={<BankCard />} />
-        <Route path="/contacts" element={<Contacts />} /> */}
+          {/*<Route path="/bank-card" element={<BankCard />} /> */}
+          <Route path="/contacts" element={<Contacts />} />
         </Routes>
         <Footer />
       </ThemeProvider>
