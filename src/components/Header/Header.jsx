@@ -1,9 +1,9 @@
 import React from 'react';
 import useCurrencyRates from '@pages/Home/components/Quotes/useCurrencyRates';
-
 import { useTheme } from '@theme/ThemeContext';
 import logo from '@assets/logo.png';
-import switchImg from '@assets/switch.png';
+import switchOff from '@assets/switchOff.png';
+import switchOn from '@assets/switchOn.png';
 import headerImg from '@assets/Header.png';
 import circleImg from '@assets/circleupdate.png';
 import {
@@ -16,11 +16,12 @@ import {
   Container,
   LastUp,
   Text,
+  PulsatingCircle,
 } from './styles';
 
 function Header() {
   const { lastUpdate } = useCurrencyRates();
-  const { toggleTheme } = useTheme();
+  const { toggleTheme, isDarkTheme } = useTheme();
 
   const formatDate = (date) => {
     if (!date) return 'Loading...';
@@ -63,7 +64,7 @@ function Header() {
             </Ul>
           </nav>
           <Switch onClick={toggleTheme}>
-            <SwitchImg src={switchImg} alt="switch" />
+            <SwitchImg src={isDarkTheme ? switchOff : switchOn} alt="switch" />
           </Switch>
         </Wrapper>
       </Container>
@@ -71,7 +72,7 @@ function Header() {
         <img src={headerImg} alt="Image" />
       </HeaderImgWrap>
       <LastUp>
-        <img src={circleImg} alt="Image" />
+        <PulsatingCircle src={circleImg} alt="Image" />
         <Text>Last updated at {formatDate(lastUpdate)}</Text>
       </LastUp>
     </header>

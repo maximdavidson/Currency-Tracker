@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import rectangle from '@assets/Rectangle.png';
 import ifix from '@assets/IFIX.png';
 import bovespa from '@assets/Bovespa.png';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import {
   Container,
   Wrapper,
@@ -17,12 +18,17 @@ import {
 } from './styles';
 
 function Stocks() {
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
+
   return (
     <Container>
       <Wrapper>
         <Title>Stocks</Title>
         <Image src={rectangle} alt="rectangle" />
-        <Cards>
+        <Cards data-aos="fade-up">
           <Card>
             <CardImage src={bovespa} alt="bovespa" />
             <Text>

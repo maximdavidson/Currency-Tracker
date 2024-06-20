@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 // eslint-disable-next-line import/prefer-default-export
 export const Container = styled.div`
@@ -52,4 +52,20 @@ export const Text = styled.p`
   font-size: 32.91px;
   font-weight: 300;
   line-height: 41.14px;
+`;
+
+const pulseAnimation = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+
+export const PulsatingCircle = styled.img`
+  animation: ${pulseAnimation} 2s infinite;
 `;

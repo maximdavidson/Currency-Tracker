@@ -68,3 +68,12 @@ export const ModalFooter = styled.div`
     }
   }
 `;
+
+export const Input = styled.input`
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+`;

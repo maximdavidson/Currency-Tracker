@@ -24,13 +24,18 @@ export const Cards = styled.div`
 `;
 
 export const Card = styled.div`
-  width: 520px;
+  width: 480px;
   background: rgba(32, 32, 37, 1);
   border-radius: 8px;
   display: flex;
   align-items: center;
   gap: 30px;
   margin-bottom: -116px;
+  cursor: pointer;
+
+  &:active {
+    position: relative;
+    top: 6px;
 `;
 
 export const CardImage = styled.img`
@@ -40,14 +45,14 @@ export const CardImage = styled.img`
 export const Text = styled.div``;
 
 export const Name = styled.p`
-  font-size: 35px;
+  font-size: 30px;
   font-weight: 400;
   line-height: 49.37px;
 `;
 
 export const Rate = styled.span`
   color: rgba(167, 178, 195, 1);
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 300;
   line-height: 41.14px;
 `;
