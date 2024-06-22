@@ -1,48 +1,48 @@
 import React, { Component } from 'react';
 import Search from './components/Search/Search';
 import Map from './components/Map/Map';
+import LocationService from './LocationService'; // services
+import { generateRandomLocations } from './LocationUtils'; //utils
 
 export class BankCard extends Component {
   state = {
     userLocation: null,
     banks: [
-      {
-        id: 1,
-        name: 'Bank A',
-        address: 'Address A',
-        location: { lat: 55.751574, lon: 37.573856 },
-      },
-      {
-        id: 2,
-        name: 'Bank B',
-        address: 'Address B',
-        location: { lat: 55.761574, lon: 37.583856 },
-      },
+      { id: 1, name: 'Bank A', address: 'Address A' },
+      { id: 2, name: 'Bank B', address: 'Address B' },
+      { id: 3, name: 'Bank C', address: 'Address C' },
+      { id: 4, name: 'Bank D', address: 'Address D' },
+      { id: 5, name: 'Bank E', address: 'Address E' },
+      { id: 6, name: 'Bank F', address: 'Address F' },
+      { id: 7, name: 'Bank G', address: 'Address G' },
+      { id: 8, name: 'Bank H', address: 'Address H' },
+      { id: 9, name: 'Bank I', address: 'Address I' },
     ],
   };
 
   componentDidMount() {
-    this.getUserLocation();
+    LocationService.getUserLocation(
+      this.onSuccessGetCurrentPosition,
+      this.onErrorGetCurrentPosition,
+    );
   }
-
-  getUserLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        this.onSuccessGetCurrentPosition,
-        this.onErrorGetCurrentPosition,
-      );
-    } else {
-      console.error('Geolocation is not supported by this browser.');
-    }
-  };
 
   onSuccessGetCurrentPosition = (position) => {
     const { latitude, longitude } = position.coords;
-    this.setState({ userLocation: { lat: latitude, lon: longitude } });
+    this.setState(
+      { userLocation: { lat: latitude, lon: longitude } },
+      this.generateBankLocations,
+    );
   };
 
   onErrorGetCurrentPosition = (error) => {
     console.error('Error getting geolocation:', error);
+  };
+
+  generateBankLocations = () => {
+    const { userLocation, banks } = this.state;
+    const randomLocations = generateRandomLocations(userLocation, banks);
+    this.setState({ banks: randomLocations });
   };
 
   render() {
