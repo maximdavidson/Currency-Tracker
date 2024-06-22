@@ -48,3 +48,29 @@ export const SearchButton = styled.button`
     height: 20px;
   }
 `;
+
+export const SuggestionsList = styled.ul`
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: rgba(27, 32, 40, 1);
+  border: 1px solid rgba(27, 32, 40, 1);
+  border-top: none;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 10;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
+
+export const SuggestionItem = styled.li`
+  padding: 10px;
+  cursor: pointer;
+  color: rgba(211, 211, 211);
+
+  &:hover {
+    background-color: rgba(63, 68, 76, 1);
+  }
+`;
