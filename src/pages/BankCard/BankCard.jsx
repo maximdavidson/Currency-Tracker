@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Search from './components/Search/Search';
 import Map from './components/Map/Map';
 import LocationService from '../../services/LocationService';
-import { generateRandomLocations } from './LocationUtils'; //utils
+import { generateRandomLocations } from './LocationUtils';
 
 export class BankCard extends Component {
   state = {

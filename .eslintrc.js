@@ -36,6 +36,7 @@ module.exports = {
           ['@utils', './src/utils'],
           ['@pages', './src/pages'],
           ['@theme', './src/theme'],
+          ['@services', './src/theme'],
         ],
         extensions: ['.js', '.jsx', '.json'],
       },

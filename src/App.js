@@ -11,8 +11,6 @@ import Contacts from './pages/Contacts/Contacts';
 import BankCard from './pages/BankCard/BankCard';
 import ErrorBoundary from './utils/ErrorBoundary';
 import Footer from './components/Footer/Footer';
-import { Buffer } from 'buffer';
-window.Buffer = Buffer;
 
 function App() {
   return (

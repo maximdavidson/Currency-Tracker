@@ -3,7 +3,7 @@ export const generateRandomLocations = (
   banks,
   maxDistance = 10,
 ) => {
-  const R = 6371; // Radius of the Earth in kilometers
+  const R = 6371;
 
   return banks.map((bank) => {
     const randomDistance = Math.random() * maxDistance;
