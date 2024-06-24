@@ -1,22 +1,17 @@
 import React from 'react';
 import { YMaps, Map as YandexMap, Placemark } from '@pbe/react-yandex-maps';
-import { Wrapper } from './styles';
+import { Wrapper, MapContainer, StyledYandexMap } from './styles';
 
 const Map = ({ banks, userLocation }) => {
   const mapCenter = userLocation
     ? [userLocation.lat, userLocation.lon]
     : [40.712776, -74.005974];
 
-  const mapStyles = {
-    width: '1000px',
-    height: '500px',
-  };
-
   return (
     <Wrapper>
-      <div style={mapStyles}>
+      <MapContainer>
         <YMaps query={{ apikey: 'c432584d-e2fa-4fe4-ad7d-7a3d682621cbs' }}>
-          <YandexMap state={{ center: mapCenter, zoom: 12 }} style={mapStyles}>
+          <StyledYandexMap state={{ center: mapCenter, zoom: 12 }}>
             <Placemark
               geometry={mapCenter}
               properties={{
@@ -44,9 +39,9 @@ const Map = ({ banks, userLocation }) => {
                   />
                 ),
             )}
-          </YandexMap>
+          </StyledYandexMap>
         </YMaps>
-      </div>
+      </MapContainer>
     </Wrapper>
   );
 };

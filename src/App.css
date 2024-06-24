@@ -7,11 +7,10 @@ body {
 /* Стили для темной темы */
 body.dark-theme {
   background: rgba(3, 3, 4, 1);
-  color: rgba(217, 217, 217, 1);
+  color: rgba(217, 217, 217, 0.851);
 }
 
 body.dark-theme p,
-body.dark-theme a,
 body.dark-theme h1,
 body.dark-theme h2,
 body.dark-theme h3,

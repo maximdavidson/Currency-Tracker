@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   margin-top: 105px;
+  @media (max-width: 450px) {
+    margin-left: 120px;
+  }
 `;
 
 export const SearchContainer = styled.div`
@@ -15,6 +18,12 @@ export const Text = styled.p`
   font-weight: 400;
   line-height: 57px;
   text-align: center;
+
+  @media (max-width: 450px) {
+    font-size: 25px;
+    padding-left: 50px;
+    line-height: 37px;
+  }
 `;
 
 export const SearchWrapper = styled.div`

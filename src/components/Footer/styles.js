@@ -3,17 +3,31 @@ import styled from 'styled-components';
 export const FooterContainer = styled.footer`
   margin-top: 250px;
   margin-bottom: 40px;
+  @media (max-width: 450px) {
+    margin-top: 200px;
+  }
 `;
 
 export const Container = styled.div`
   padding-left: 131px;
   padding-right: 120px;
+  @media (max-width: 450px) {
+    padding-left: 55px;
+    padding-right: 1px;
+  }
 `;
 
 export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 100px;
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 70px;
+  }
+  @media (max-width: 450px) {
+    grid-gap: 10px;
+  }
 `;
 
 export const HistorySide = styled.div``;
@@ -30,12 +44,21 @@ export const Text = styled.p`
   font-weight: 300;
   line-height: 36px;
   margin-top: 18px;
+  @media (max-width: 900px) {
+    font-size: 22px;
+  }
+  @media (max-width: 450px) {
+    font-size: 20px;
+  }
 `;
 
 export const LinkSide = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 78px;
+  @media (max-width: 900px) {
+    grid-gap: 58px;
+  }
 `;
 
 export const Title = styled.p`
@@ -43,6 +66,10 @@ export const Title = styled.p`
   font-weight: 400;
   line-height: 42px;
   padding-bottom: 20px;
+  @media (max-width: 900px) {
+    padding-bottom: 15px;
+    font-size: 26px;
+  }
 `;
 
 export const Link = styled.a`
@@ -56,6 +83,9 @@ export const Link = styled.a`
   &:hover {
     opacity: 0.7;
   }
+  @media (max-width: 900px) {
+    font-size: 22px;
+  }
 `;
 
 export const FooterNote = styled.p`
@@ -66,4 +96,10 @@ export const FooterNote = styled.p`
   line-height: 36px;
   color: rgba(137, 137, 137, 1);
   margin-top: 54px;
+  @media (max-width: 900px) {
+    font-size: 22px;
+  }
+  @media (max-width: 450px) {
+    font-size: 18px;
+  }
 `;
