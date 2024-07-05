@@ -1,4 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from './themes';
 
 const ThemeContext = createContext();
 
@@ -10,16 +12,17 @@ export const ThemeProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light');
-    document.body.className = isDarkTheme ? 'dark-theme' : 'light-theme';
   }, [isDarkTheme]);
 
   const toggleTheme = () => {
     setIsDarkTheme((prevTheme) => !prevTheme);
   };
 
+  const theme = isDarkTheme ? darkTheme : lightTheme;
+
   return (
     <ThemeContext.Provider value={{ isDarkTheme, toggleTheme }}>
-      {children}
+      <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>
     </ThemeContext.Provider>
   );
 };

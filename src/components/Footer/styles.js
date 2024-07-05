@@ -98,6 +98,7 @@ export const FooterNote = styled.p`
   margin-top: 54px;
   @media (max-width: 900px) {
     font-size: 22px;
+    margin-right: -120px;
   }
   @media (max-width: 450px) {
     font-size: 18px;

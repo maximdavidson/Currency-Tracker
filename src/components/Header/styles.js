@@ -15,7 +15,7 @@ export const Container = styled.div`
 `;
 
 export const StyledLink = styled(NavLink)`
-  color: rgba(255, 255, 255);
+  color: ${({ theme }) => theme.textColor};
   text-decoration: none;
 
   &:hover {
@@ -88,6 +88,10 @@ export const LastUp = styled.div`
   justify-content: center;
   margin: 56px auto;
   gap: 10px;
+
+  @media (max-width: 900px) {
+    margin-right: -150px;
+  }
 `;
 
 export const Text = styled.p`
@@ -151,7 +155,11 @@ export const Menu = styled.div`
   `}
   @media (max-width: 450px) {
     width: 145%;
-    height: 145vh;
+    height: 50vh;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
   }
 `;
 

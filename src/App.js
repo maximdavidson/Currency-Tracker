@@ -1,9 +1,7 @@
-import './App.css';
-
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './theme/ThemeContext';
-
+import GlobalStyles from './GlobalStyles';
 import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
 import Timeline from './pages/Timeline/Timeline';
@@ -16,6 +14,7 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider>
+        <GlobalStyles />
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />

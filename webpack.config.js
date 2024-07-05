@@ -42,6 +42,8 @@ module.exports = {
       '@utils': path.resolve(__dirname, 'src/utils/'),
       '@pages': path.resolve(__dirname, 'src/pages/'),
       '@theme': path.resolve(__dirname, 'src/theme/'),
+      '@services': path.resolve(__dirname, 'src/services/'),
+      '@constants': path.resolve(__dirname, 'src/constants/'),
     },
   },
   plugins: [

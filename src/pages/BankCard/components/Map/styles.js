@@ -5,6 +5,11 @@ export const Wrapper = styled.div`
   margin-top: 80px;
   display: flex;
   justify-content: center;
+
+  @media (max-width: 900px) {
+    margin-left: 40px;
+    margin-right: -150px;
+  }
 `;
 
 export const MapContainer = styled.div`
@@ -19,6 +24,6 @@ export const StyledYandexMap = styled(YandexMap)`
   height: 100%;
 
   @media (max-width: 900px) {
-    width: 80%;
+    width: 100%;
   }
 `;

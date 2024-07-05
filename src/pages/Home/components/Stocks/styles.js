@@ -25,10 +25,11 @@ export const Cards = styled.div`
   margin-top: 50px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 184px;
+  grid-gap: 90px;
   @media (max-width: 900px) {
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 90px;
+    margin-left: 15px;
   }
   @media (max-width: 450px) {
     grid-gap: 70px;

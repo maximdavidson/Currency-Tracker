@@ -37,6 +37,7 @@ module.exports = {
           ['@pages', './src/pages'],
           ['@theme', './src/theme'],
           ['@services', './src/theme'],
+          ['@constants', './src/constants'],
         ],
         extensions: ['.js', '.jsx', '.json'],
       },
