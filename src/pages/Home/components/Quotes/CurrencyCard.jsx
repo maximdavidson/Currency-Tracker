@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardImage, Text, Name, Rate } from './styles';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import initAOS from '@constants/aosConfig';
+
+const formatRate = (rate) => (rate ? rate.value : 'Loading...');
 
 const CurrencyCard = ({ image, alt, name, rate, onClick }) => {
-  const formatRate = (rate) => (rate ? rate.value : 'Loading...');
-
   useEffect(() => {
-    AOS.init();
-    AOS.refresh();
+    initAOS();
   }, []);
 
   return (
@@ -29,7 +27,9 @@ CurrencyCard.propTypes = {
   image: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  rate: PropTypes.object,
+  rate: PropTypes.shape({
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }),
   onClick: PropTypes.func.isRequired,
 };
 
