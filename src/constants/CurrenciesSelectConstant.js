@@ -1,11 +1,6 @@
 import dollar from '@assets/Dollar.png';
-import cdollar from '@assets/CanadianDollar.png';
-import adollar from '@assets/AustralianDollar.png';
 import euro from '@assets/Euro.png';
-import libra from '@assets/Libra.png';
-import apeso from '@assets/PesoArgentino.png';
 import yen from '@assets/Yen.png';
-import yuan from '@assets/Won.png';
 import bitcoin from '@assets/Bitcoin.png';
 
 const currencies = [

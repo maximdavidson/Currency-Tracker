@@ -1,40 +1,21 @@
-import React, { Component } from 'react';
-import vector from '@assets/Vector.png';
+import React from 'react';
 import './styles.css';
+import vector from '@assets/Vector.png';
 import currencies from '@constants/CurrenciesSelectConstant';
-import ChartModal from '../ChartModal/ChartModal';
 
-export class Select extends Component {
-  state = {
-    selectedCurrency: '',
-    showModal: false,
-  };
-
-  handleChange = (event) => {
-    this.setState({ selectedCurrency: event.target.value });
-  };
-
-  handleShowModal = () => {
-    this.setState({ showModal: true });
-  };
-
-  handleCloseModal = () => {
-    this.setState({ showModal: false });
-  };
-
+class Select extends React.Component {
   render() {
-    const { selectedCurrency, showModal } = this.state;
-
-    const selectedCurrencyDetails = currencies.find(
-      (currency) => currency.name === selectedCurrency,
+    const { value, onChange } = this.props;
+    const selectedCurrency = currencies.find(
+      (currency) => currency.code === value,
     );
 
     return (
       <div className="select-container">
         <select
-          onChange={this.handleChange}
-          value={selectedCurrency}
           className="select-dropdown"
+          onChange={onChange}
+          value={value}
           style={{
             backgroundImage: `url(${vector})`,
             backgroundRepeat: 'no-repeat',
@@ -42,40 +23,26 @@ export class Select extends Component {
             backgroundSize: '20px',
           }}
         >
-          <option value="">Select Currency</option>
-          {currencies.map((currency, index) => (
-            <option key={index} value={currency.name}>
+          {currencies.map((currency) => (
+            <option key={currency.code} value={currency.code}>
               {currency.name}
             </option>
           ))}
         </select>
-        {selectedCurrencyDetails && (
+        {selectedCurrency && (
           <div className="currency-details">
             <img
-              src={selectedCurrencyDetails.image}
-              alt={selectedCurrencyDetails.name}
+              src={selectedCurrency.image}
+              alt={selectedCurrency.name}
               className="currency-image"
             />
             <div className="currency-info">
               <div className="currency-name">
-                {selectedCurrencyDetails.description}
+                {selectedCurrency.description}
               </div>
-              <div className="currency-code">
-                {selectedCurrencyDetails.code}
-              </div>
+              <div className="currency-code">{selectedCurrency.code}</div>
             </div>
           </div>
-        )}
-        {selectedCurrency && (
-          <button onClick={this.handleShowModal} className="chart-button">
-            Plot the graph
-          </button>
-        )}
-        {showModal && (
-          <ChartModal
-            currency={selectedCurrencyDetails}
-            onClose={this.handleCloseModal}
-          />
         )}
       </div>
     );
