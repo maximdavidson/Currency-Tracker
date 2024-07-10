@@ -38,6 +38,7 @@ module.exports = {
           ['@theme', './src/theme'],
           ['@services', './src/theme'],
           ['@constants', './src/constants'],
+          ['@hooks', './src/hooks'],
         ],
         extensions: ['.js', '.jsx', '.json'],
       },

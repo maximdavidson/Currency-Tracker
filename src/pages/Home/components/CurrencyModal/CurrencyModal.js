@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
   Modal,
@@ -8,6 +8,7 @@ import {
   ModalFooter,
   Input,
 } from './styles';
+import { getConvertedAmount } from './getConvertedAmount';
 
 const CurrencyModal = ({ isOpen, onClose, currency, currencyRates }) => {
   const [selectedCurrency, setSelectedCurrency] = useState(currency.key);
@@ -21,19 +22,11 @@ const CurrencyModal = ({ isOpen, onClose, currency, currencyRates }) => {
     setAmount(event.target.value);
   };
 
-  const getConvertedAmount = () => {
-    if (
-      currencyRates &&
-      currencyRates[selectedCurrency] &&
-      currencyRates[currency.key]
-    ) {
-      return (
-        (amount * currencyRates[currency.key].value) /
-        currencyRates[selectedCurrency].value
-      ).toFixed(2);
-    }
-    return 'Loading...';
-  };
+  const convertedAmount = useMemo(
+    () =>
+      getConvertedAmount(amount, currencyRates, currency.key, selectedCurrency),
+    [amount, currencyRates, currency.key, selectedCurrency],
+  );
 
   const handleClickOutside = (event) => {
     if (event.target === event.currentTarget) {
@@ -57,7 +50,7 @@ const CurrencyModal = ({ isOpen, onClose, currency, currencyRates }) => {
             min="0"
           />
           <p>
-            {amount} {currency.name} is approximately {getConvertedAmount()}{' '}
+            {amount} {currency.name} is approximately {convertedAmount}{' '}
             {selectedCurrency}
           </p>
           <select value={selectedCurrency} onChange={handleCurrencyChange}>

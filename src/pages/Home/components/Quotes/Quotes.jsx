@@ -1,57 +1,24 @@
-import React, { useState } from 'react';
-import useCurrencyRates from './useCurrencyRates';
+import React, { useState, useMemo, useCallback } from 'react';
+import useCurrencyRates from '@hooks/useCurrencyRates';
 import CurrencyCard from './CurrencyCard';
 import CurrencyModal from '../CurrencyModal/CurrencyModal';
 import rectangle from '@assets/Rectangle.png';
-import dollar from '@assets/Dollar.png';
-import cdollar from '@assets/CanadianDollar.png';
-import adollar from '@assets/AustralianDollar.png';
-import euro from '@assets/Euro.png';
-import libra from '@assets/Libra.png';
-import apeso from '@assets/PesoArgentino.png';
-import yen from '@assets/Yen.png';
-import yuan from '@assets/Won.png';
-import bitcoin from '@assets/Bitcoin.png';
 import { Container, Wrapper, Title, Image, Cards } from './styles';
-
-const currencyData = [
-  {
-    image: dollar,
-    alt: 'Commercial Dollar',
-    name: 'Commercial Dollar',
-    key: 'USD',
-  },
-  {
-    image: cdollar,
-    alt: 'Canadian Dollar',
-    name: 'Canadian Dollar',
-    key: 'CAD',
-  },
-  {
-    image: adollar,
-    alt: 'Australian Dollar',
-    name: 'Australian Dollar',
-    key: 'AUD',
-  },
-  { image: euro, alt: 'Euro', name: 'Euro', key: 'EUR' },
-  { image: libra, alt: 'Libra', name: 'Libra', key: 'GBP' },
-  { image: apeso, alt: 'Argentine Peso', name: 'Argentine Peso', key: 'ARS' },
-  { image: yen, alt: 'Yen', name: 'Yen', key: 'JPY' },
-  { image: yuan, alt: 'Yuan', name: 'Yuan', key: 'CNY' },
-  { image: bitcoin, alt: 'Bitcoin', name: 'Bitcoin', key: 'BTC' },
-];
+import { currencyData } from '@constants/currencyDataConstant';
 
 const Quotes = () => {
   const { currencyRates } = useCurrencyRates();
   const [selectedCurrency, setSelectedCurrency] = useState(null);
 
-  const openModal = (currency) => {
+  const openModal = useCallback((currency) => {
     setSelectedCurrency(currency);
-  };
+  }, []);
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setSelectedCurrency(null);
-  };
+  }, []);
+
+  const memoizedCurrencyData = useMemo(() => currencyData, []);
 
   return (
     <Container>
@@ -59,7 +26,7 @@ const Quotes = () => {
         <Title>Quotes</Title>
         <Image src={rectangle} alt="rectangle" />
         <Cards>
-          {currencyData.map((currency) => (
+          {memoizedCurrencyData.map((currency) => (
             <CurrencyCard
               key={currency.key}
               image={currency.image}

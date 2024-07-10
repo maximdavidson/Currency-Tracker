@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import useCurrencyRates from '@pages/Home/components/Quotes/useCurrencyRates';
+import useCurrencyRates from '@hooks/useCurrencyRates';
 import { useTheme } from '@theme/ThemeContext';
 import logo from '@assets/logo.png';
 import switchOff from '@assets/switchOff.png';

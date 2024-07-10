@@ -1,5 +1,5 @@
 import React from 'react';
-import { YMaps, Map as YandexMap, Placemark } from '@pbe/react-yandex-maps';
+import { YMaps, Placemark } from '@pbe/react-yandex-maps';
 import { Wrapper, MapContainer, StyledYandexMap } from './styles';
 
 const Map = ({ banks, userLocation }) => {

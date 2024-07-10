@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import rectangle from '@assets/Rectangle.png';
 import ifix from '@assets/IFIX.png';
 import bovespa from '@assets/Bovespa.png';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import initAOS from '@constants/aosConfig';
 import {
   Container,
   Wrapper,
@@ -17,10 +16,9 @@ import {
   Rate,
 } from './styles';
 
-function Stocks() {
+const Stocks = () => {
   useEffect(() => {
-    AOS.init();
-    AOS.refresh();
+    initAOS();
   }, []);
 
   return (
@@ -50,6 +48,6 @@ function Stocks() {
       </Wrapper>
     </Container>
   );
-}
+};
 
 export default Stocks;
