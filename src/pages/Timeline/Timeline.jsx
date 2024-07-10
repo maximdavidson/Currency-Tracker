@@ -23,7 +23,7 @@ const Timeline = () => {
 
   const fetchData = async () => {
     const currencyPair = `${firstCurrency}/${secondCurrency}`;
-    const apiKey = ' 608B2CD2-2D43-4CCA-9AFC-61A2EC18A36'; // 8
+    const apiKey = ' 608B2CD2-2D43-4CCA-9AFC-61A2EC18A368'; // 8
     const url = `https://rest.coinapi.io/v1/exchangerate/${currencyPair}/history?period_id=1DAY&time_start=${startDate.toISOString()}&time_end=${endDate.toISOString()}&limit=50`; // Увеличиваем лимит до 50 дней
 
     const cacheKey = `${currencyPair}_${startDate.toISOString()}_${endDate.toISOString()}`;
