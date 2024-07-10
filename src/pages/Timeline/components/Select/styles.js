@@ -1,9 +1,11 @@
-.select-container {
+import styled from 'styled-components';
+
+export const SelectContainer = styled.div`
   margin-left: 96px;
   color: rgba(217, 217, 217, 1);
-}
+`;
 
-.select-dropdown {
+export const SelectDropdown = styled.select`
   color: rgba(217, 217, 217, 1);
   padding: 10px 50px 10px 10px;
   border-radius: 5px;
@@ -18,64 +20,66 @@
   font-size: 25px;
   font-weight: 500;
   line-height: 45px;
-}
+  background-image: ${(props) => `url(${props.vector})`};
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
 
-.select-dropdown:focus {
-  outline: none;
-}
-
-.select-dropdown option {
-  background: rgba(51, 51, 51, 0.7);
-  border: none;
-  max-width: 100px;
-}
-
-@media (max-width: 450px) {
-  .select-dropdown option {
-    font-size: 12px;
-    padding: 5px 10px;
+  &:focus {
+    outline: none;
   }
-  .select-dropdown {
+
+  option {
+    background: rgba(51, 51, 51, 0.7);
+    border: none;
+    max-width: 100px;
+  }
+
+  @media (max-width: 450px) {
+    option {
+      font-size: 12px;
+      padding: 5px 10px;
+    }
     margin-bottom: 30px;
     line-height: 30px;
   }
-}
 
-.select-dropdown::-ms-expand {
-  display: none;
-}
+  &::-ms-expand {
+    display: none;
+  }
+`;
 
-.currency-details {
+export const CurrencyDetails = styled.div`
   display: flex;
   align-items: center;
   padding: 10px;
   border-radius: 5px;
-}
+`;
 
-.currency-image {
+export const CurrencyImage = styled.img`
   width: 70px;
   margin-right: 20px;
-}
+`;
 
-.currency-info {
+export const CurrencyInfo = styled.div`
   display: flex;
   flex-direction: column;
-}
+`;
 
-.currency-name {
+export const CurrencyName = styled.div`
   font-size: 30px;
   font-weight: 400;
   line-height: 49.37px;
-}
+`;
 
-.currency-code {
+export const CurrencyCode = styled.div`
   color: rgba(255, 255, 255, 1);
   font-size: 14px;
   font-weight: 300;
   line-height: 24px;
-}
+`;
 
-.chart-button {
+export const ChartButton = styled.button`
   background-color: #1b1831;
   color: rgb(204, 204, 204);
   border: none;
@@ -84,8 +88,8 @@
   margin-top: 10px;
   font-size: 16px;
   border-radius: 6px;
-}
 
-.chart-button:hover {
-  background-color: #14121f;
-}
+  &:hover {
+    background-color: #14121f;
+  }
+`;

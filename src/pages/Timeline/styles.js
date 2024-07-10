@@ -1,13 +1,6 @@
-.modal select,
-.modal input {
-  display: block;
-  width: 100%;
-  margin-top: 10px;
-  padding: 10px;
-  font-size: 16px;
-}
+import styled, { keyframes } from 'styled-components';
 
-.button-change {
+export const ButtonChange = styled.button`
   cursor: pointer;
   border: none;
   margin-top: 30px;
@@ -19,9 +12,9 @@
   font-size: 18px;
   margin-bottom: 150px;
   color: rgba(255, 255, 255, 0.693);
-}
+`;
 
-@keyframes wave1 {
+export const wave1 = keyframes`
   0% {
     transform: translateY(0);
   }
@@ -31,9 +24,9 @@
   100% {
     transform: translateY(0);
   }
-}
+`;
 
-@keyframes wave2 {
+export const wave2 = keyframes`
   0% {
     transform: translateY(0);
   }
@@ -43,9 +36,9 @@
   100% {
     transform: translateY(0);
   }
-}
+`;
 
-@keyframes wave3 {
+export const wave3 = keyframes`
   0% {
     transform: translateY(0);
   }
@@ -55,25 +48,39 @@
   100% {
     transform: translateY(0);
   }
-}
+`;
 
-.loading-dots {
+export const LoadingDots = styled.p`
   font-size: 35px;
   text-align: center;
-}
+`;
 
-.loading-dot-1 {
-  animation: wave1 1.3s infinite;
+export const LoadingDot1 = styled.span`
+  animation: ${wave1} 1.3s infinite;
   display: inline-block;
   margin: 0 2px;
-}
-.loading-dot-2 {
-  animation: wave2 1.1s infinite;
+`;
+
+export const LoadingDot2 = styled.span`
+  animation: ${wave2} 1.1s infinite;
   display: inline-block;
   margin: 0 2px;
-}
-.loading-dot-3 {
-  animation: wave3 1.3s infinite;
+`;
+
+export const LoadingDot3 = styled.span`
+  animation: ${wave3} 1.3s infinite;
   display: inline-block;
   margin: 0 2px;
-}
+`;
+
+export const SuccessMessage = styled.div`
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1000;
+`;

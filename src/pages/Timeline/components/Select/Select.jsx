@@ -1,7 +1,16 @@
 import React from 'react';
-import './styles.css';
 import vector from '@assets/Vector.png';
 import currencies from '@constants/CurrenciesSelectConstant';
+import {
+  SelectContainer,
+  SelectDropdown,
+  CurrencyDetails,
+  CurrencyImage,
+  CurrencyInfo,
+  CurrencyName,
+  CurrencyCode,
+  ChartButton,
+} from './styles';
 
 class Select extends React.Component {
   render() {
@@ -11,40 +20,27 @@ class Select extends React.Component {
     );
 
     return (
-      <div className="select-container">
-        <select
-          className="select-dropdown"
-          onChange={onChange}
-          value={value}
-          style={{
-            backgroundImage: `url(${vector})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'right 10px center',
-            backgroundSize: '20px',
-          }}
-        >
+      <SelectContainer>
+        <SelectDropdown onChange={onChange} value={value} vector={vector}>
           {currencies.map((currency) => (
             <option key={currency.code} value={currency.code}>
               {currency.name}
             </option>
           ))}
-        </select>
+        </SelectDropdown>
         {selectedCurrency && (
-          <div className="currency-details">
-            <img
+          <CurrencyDetails>
+            <CurrencyImage
               src={selectedCurrency.image}
               alt={selectedCurrency.name}
-              className="currency-image"
             />
-            <div className="currency-info">
-              <div className="currency-name">
-                {selectedCurrency.description}
-              </div>
-              <div className="currency-code">{selectedCurrency.code}</div>
-            </div>
-          </div>
+            <CurrencyInfo>
+              <CurrencyName>{selectedCurrency.description}</CurrencyName>
+              <CurrencyCode>{selectedCurrency.code}</CurrencyCode>
+            </CurrencyInfo>
+          </CurrencyDetails>
         )}
-      </div>
+      </SelectContainer>
     );
   }
 }

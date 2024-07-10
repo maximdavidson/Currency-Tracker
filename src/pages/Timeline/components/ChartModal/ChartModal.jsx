@@ -1,6 +1,6 @@
 import React from 'react';
-import './styles.css';
 import SimpleSelect from '../Select/SimpleSelect';
+import { ModalOverlay, Modal, CloseButton } from './styles';
 
 class ChartModal extends React.Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class ChartModal extends React.Component {
       startDate,
       handleStartDateChange,
       endDate,
-      dateError, // новый проп
+      dateError,
     } = this.props;
 
     if (!isOpen) {
@@ -43,33 +43,30 @@ class ChartModal extends React.Component {
     }
 
     return (
-      <div className="modal-overlay">
-        <div className="modal" ref={this.modalRef}>
-          <button className="close-button" onClick={onClose}>
-            X
-          </button>
-          <label>Вторая валюта:</label>
+      <ModalOverlay>
+        <Modal ref={this.modalRef}>
+          <CloseButton onClick={onClose}>X</CloseButton>
+          <label>Second currency:</label>
           <SimpleSelect
             options={availableCurrencies}
             value={secondCurrency}
             onChange={(e) => setSecondCurrency(e.target.value)}
           />
-          <label>Дата начала:</label>
+          <label>Start Date:</label>
           <input
             type="date"
             onChange={handleStartDateChange}
             value={startDate.toISOString().split('T')[0]}
           />
-          {dateError && <div style={{ color: 'red' }}>{dateError}</div>}{' '}
-          {/* отображение ошибки */}
-          <label>Сегодня</label>
+          {dateError && <div style={{ color: 'red' }}>{dateError}</div>}
+          <label>Today</label>
           <input
             type="date"
             value={endDate.toISOString().split('T')[0]}
             readOnly
           />
-        </div>
-      </div>
+        </Modal>
+      </ModalOverlay>
     );
   }
 }

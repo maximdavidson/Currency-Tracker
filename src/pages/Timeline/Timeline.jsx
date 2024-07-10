@@ -1,129 +1,146 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { Component } from 'react';
 import Select from './components/Select/Select';
 import Graph from './components/Graph/Graph';
 import ChartModal from './components/ChartModal/ChartModal';
-import './style.css';
+import { fetchData } from '@services/apiChart';
+import {
+  ButtonChange,
+  LoadingDots,
+  LoadingDot1,
+  LoadingDot2,
+  LoadingDot3,
+  // SuccessMessage,
+} from './styles';
 
-const Timeline = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [barChartData, setBarChartData] = useState(null);
-  const [firstCurrency, setFirstCurrency] = useState('BTC');
-  const [secondCurrency, setSecondCurrency] = useState('USD');
-  const [startDate, setStartDate] = useState(
-    new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
-  );
-  const [endDate, setEndDate] = useState(new Date());
-  const [availableCurrencies, setAvailableCurrencies] = useState([
-    'USD',
-    'EUR',
-    'BTC',
-  ]);
-  const [dateError, setDateError] = useState(null);
+class Timeline extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isModalOpen: false,
+      barChartData: null,
+      firstCurrency: 'BTC',
+      secondCurrency: 'USD',
+      startDate: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
+      endDate: new Date(),
+      dateError: null,
+    };
+  }
 
-  const fetchData = async () => {
-    const currencyPair = `${firstCurrency}/${secondCurrency}`;
-    const apiKey = ' 608B2CD2-2D43-4CCA-9AFC-61A2EC18A368'; // 8
-    const url = `https://rest.coinapi.io/v1/exchangerate/${currencyPair}/history?period_id=1DAY&time_start=${startDate.toISOString()}&time_end=${endDate.toISOString()}&limit=50`; // Увеличиваем лимит до 50 дней
+  componentDidMount() {
+    this.getData();
+  }
 
-    const cacheKey = `${currencyPair}_${startDate.toISOString()}_${endDate.toISOString()}`;
-    const cachedData = localStorage.getItem(cacheKey);
-
-    if (cachedData) {
-      setBarChartData(JSON.parse(cachedData));
-    } else {
-      try {
-        const response = await axios.get(url, {
-          headers: { 'X-CoinAPI-Key': apiKey },
-        });
-        const data = response.data;
-
-        const chartData = {
-          datasets: [
-            {
-              label: 'Candlestick',
-              data: data.map((item) => ({
-                x: new Date(item.time_period_start),
-                o: item.rate_open,
-                h: item.rate_high,
-                l: item.rate_low,
-                c: item.rate_close,
-              })),
-              borderColor: 'rgba(0, 0, 255, 0.5)',
-              backgroundColor: 'rgba(0, 0, 255, 0.5)',
-            },
-          ],
-        };
-
-        localStorage.setItem(cacheKey, JSON.stringify(chartData));
-        setBarChartData(chartData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
+  componentDidUpdate(prevProps, prevState) {
+    const { firstCurrency, secondCurrency, startDate, endDate } = this.state;
+    if (
+      firstCurrency !== prevState.firstCurrency ||
+      secondCurrency !== prevState.secondCurrency ||
+      startDate !== prevState.startDate ||
+      endDate !== prevState.endDate
+    ) {
+      this.getData();
     }
-  };
+  }
 
-  useEffect(() => {
-    fetchData();
-  }, [firstCurrency, secondCurrency, startDate, endDate]);
+  async getData() {
+    const { firstCurrency, secondCurrency, startDate, endDate } = this.state;
+    try {
+      const data = await fetchData(
+        firstCurrency,
+        secondCurrency,
+        startDate,
+        endDate,
+      );
+      this.setState({ barChartData: data });
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
 
-  const checkDateDifference = (newStartDate) => {
+  checkDateDifference(newStartDate) {
+    const { endDate } = this.state;
     const differenceInTime = endDate.getTime() - newStartDate.getTime();
     const differenceInDays = differenceInTime / (1000 * 3600 * 24);
     return differenceInDays >= 30 && differenceInDays <= 50;
-  };
+  }
 
-  const handleStartDateChange = (e) => {
+  handleStartDateChange = (e) => {
     const newStartDate = new Date(e.target.value);
-    if (checkDateDifference(newStartDate)) {
-      setStartDate(newStartDate);
-      setDateError(null);
+    if (this.checkDateDifference(newStartDate)) {
+      this.setState({ startDate: newStartDate, dateError: null });
     } else {
-      setDateError(
-        'The difference between the start date and the current date must be no less than 30 days and no more than 50 days',
-      );
+      this.setState({
+        dateError:
+          'The difference between the start date and the current date must be no less than 30 days and no more than 50 days',
+      });
     }
   };
 
-  if (!barChartData) {
+  handleModalOpen = () => {
+    this.setState({ isModalOpen: true });
+  };
+
+  handleModalClose = () => {
+    this.setState({ isModalOpen: false });
+  };
+
+  renderLoading() {
     return (
-      <div className="wrapper">
-        <p className="loading-dots">
+      <>
+        <LoadingDots>
           Loading
-          <span className="loading-dot-1">.</span>
-          <span className="loading-dot-2">.</span>
-          <span className="loading-dot-3">.</span>
-        </p>
-      </div>
+          <LoadingDot1>.</LoadingDot1>
+          <LoadingDot2>.</LoadingDot2>
+          <LoadingDot3>.</LoadingDot3>
+        </LoadingDots>
+      </>
     );
   }
 
-  return (
-    <div className="wrapper">
-      <Select
-        options={availableCurrencies}
-        value={firstCurrency}
-        onChange={(e) => setFirstCurrency(e.target.value)}
-      />
-      <button className="button-change" onClick={() => setIsModalOpen(true)}>
-        Change parameters
-      </button>
+  renderContent() {
+    const {
+      isModalOpen,
+      barChartData,
+      firstCurrency,
+      secondCurrency,
+      startDate,
+      endDate,
+      dateError,
+    } = this.state;
 
-      <ChartModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        availableCurrencies={availableCurrencies}
-        secondCurrency={secondCurrency}
-        setSecondCurrency={setSecondCurrency}
-        startDate={startDate}
-        handleStartDateChange={handleStartDateChange}
-        endDate={endDate}
-        dateError={dateError}
-      />
+    return (
+      <>
+        <Select
+          value={firstCurrency}
+          onChange={(e) => this.setState({ firstCurrency: e.target.value })}
+        />
+        <ButtonChange onClick={this.handleModalOpen}>
+          Change parameters
+        </ButtonChange>
 
-      <Graph data={barChartData} />
-    </div>
-  );
-};
+        <ChartModal
+          isOpen={isModalOpen}
+          onClose={this.handleModalClose}
+          secondCurrency={secondCurrency}
+          setSecondCurrency={(value) =>
+            this.setState({ secondCurrency: value })
+          }
+          startDate={startDate}
+          handleStartDateChange={this.handleStartDateChange}
+          endDate={endDate}
+          dateError={dateError}
+        />
+
+        <Graph data={barChartData} />
+      </>
+    );
+  }
+
+  render() {
+    const { barChartData } = this.state;
+
+    return barChartData ? this.renderContent() : this.renderLoading();
+  }
+}
 
 export default Timeline;
