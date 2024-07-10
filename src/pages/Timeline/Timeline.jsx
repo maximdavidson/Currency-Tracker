@@ -8,8 +8,8 @@ import './style.css';
 const Timeline = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [barChartData, setBarChartData] = useState(null);
-  const [firstCurrency, setFirstCurrency] = useState('USD');
-  const [secondCurrency, setSecondCurrency] = useState('EUR');
+  const [firstCurrency, setFirstCurrency] = useState('BTC');
+  const [secondCurrency, setSecondCurrency] = useState('USD');
   const [startDate, setStartDate] = useState(
     new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
   );
@@ -19,67 +19,83 @@ const Timeline = () => {
     'EUR',
     'BTC',
   ]);
-  const [dateError, setDateError] = useState(null); // новое состояние для ошибки даты
+  const [dateError, setDateError] = useState(null);
+
+  const fetchData = async () => {
+    const currencyPair = `${firstCurrency}/${secondCurrency}`;
+    const apiKey = ' 608B2CD2-2D43-4CCA-9AFC-61A2EC18A36'; // 8
+    const url = `https://rest.coinapi.io/v1/exchangerate/${currencyPair}/history?period_id=1DAY&time_start=${startDate.toISOString()}&time_end=${endDate.toISOString()}&limit=50`; // Увеличиваем лимит до 50 дней
+
+    const cacheKey = `${currencyPair}_${startDate.toISOString()}_${endDate.toISOString()}`;
+    const cachedData = localStorage.getItem(cacheKey);
+
+    if (cachedData) {
+      setBarChartData(JSON.parse(cachedData));
+    } else {
+      try {
+        const response = await axios.get(url, {
+          headers: { 'X-CoinAPI-Key': apiKey },
+        });
+        const data = response.data;
+
+        const chartData = {
+          datasets: [
+            {
+              label: 'Candlestick',
+              data: data.map((item) => ({
+                x: new Date(item.time_period_start),
+                o: item.rate_open,
+                h: item.rate_high,
+                l: item.rate_low,
+                c: item.rate_close,
+              })),
+              borderColor: 'rgba(0, 0, 255, 0.5)',
+              backgroundColor: 'rgba(0, 0, 255, 0.5)',
+            },
+          ],
+        };
+
+        localStorage.setItem(cacheKey, JSON.stringify(chartData));
+        setBarChartData(chartData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const currencyPair = `${firstCurrency}/${secondCurrency}`;
-      const apiKey = '66A7E812-0449-49CC-84AC-5B95C8A157D1';
-      const url = `https://rest.coinapi.io/v1/exchangerate/${currencyPair}/history?period_id=1DAY&time_start=${startDate.toISOString()}&time_end=${endDate.toISOString()}&limit=30`;
-      const response = await axios.get(url, {
-        headers: { 'X-CoinAPI-Key': apiKey },
-      });
-      const data = response.data;
-
-      const uniqueDates = {};
-      data.forEach((item) => {
-        const date = new Date(item.time_period_start)
-          .toISOString()
-          .split('T')[0];
-        uniqueDates[date] = item;
-      });
-
-      const filteredData = Object.values(uniqueDates);
-
-      setBarChartData({
-        labels: filteredData.map(
-          (item) =>
-            new Date(item.time_period_start).toISOString().split('T')[0],
-        ),
-        datasets: [
-          {
-            data: filteredData.map((item) =>
-              Number(item.rate_close).toFixed(2),
-            ),
-            backgroundColor: 'rgba(0, 0, 255, 0.5)',
-            fill: true,
-          },
-        ],
-      });
-    };
     fetchData();
-  }, [firstCurrency, secondCurrency, startDate]);
+  }, [firstCurrency, secondCurrency, startDate, endDate]);
 
   const checkDateDifference = (newStartDate) => {
     const differenceInTime = endDate.getTime() - newStartDate.getTime();
     const differenceInDays = differenceInTime / (1000 * 3600 * 24);
-    return differenceInDays >= 30;
+    return differenceInDays >= 30 && differenceInDays <= 50;
   };
 
   const handleStartDateChange = (e) => {
     const newStartDate = new Date(e.target.value);
     if (checkDateDifference(newStartDate)) {
       setStartDate(newStartDate);
-      setDateError(null); // очистить ошибку, если разница в датах больше 30 дней
+      setDateError(null);
     } else {
       setDateError(
-        'Разница между датой начала и текущей датой должна быть не менее 30 дней',
+        'The difference between the start date and the current date must be no less than 30 days and no more than 50 days',
       );
     }
   };
 
   if (!barChartData) {
-    return null;
+    return (
+      <div className="wrapper">
+        <p className="loading-dots">
+          Loading
+          <span className="loading-dot-1">.</span>
+          <span className="loading-dot-2">.</span>
+          <span className="loading-dot-3">.</span>
+        </p>
+      </div>
+    );
   }
 
   return (
@@ -90,7 +106,7 @@ const Timeline = () => {
         onChange={(e) => setFirstCurrency(e.target.value)}
       />
       <button className="button-change" onClick={() => setIsModalOpen(true)}>
-        Изменить параметры
+        Change parameters
       </button>
 
       <ChartModal
@@ -102,7 +118,7 @@ const Timeline = () => {
         startDate={startDate}
         handleStartDateChange={handleStartDateChange}
         endDate={endDate}
-        dateError={dateError} // передать ошибку даты в модальное окно
+        dateError={dateError}
       />
 
       <Graph data={barChartData} />
