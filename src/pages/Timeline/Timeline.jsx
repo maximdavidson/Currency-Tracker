@@ -9,10 +9,12 @@ import {
   LoadingDot1,
   LoadingDot2,
   LoadingDot3,
-  // SuccessMessage,
 } from './styles';
+import SuccessMessageContext from '../../context/SuccessMessageContext';
 
 class Timeline extends Component {
+  static contextType = SuccessMessageContext;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -44,6 +46,7 @@ class Timeline extends Component {
 
   async getData() {
     const { firstCurrency, secondCurrency, startDate, endDate } = this.state;
+    const { addMessage, clearMessages } = this.context;
     try {
       const data = await fetchData(
         firstCurrency,
@@ -52,6 +55,8 @@ class Timeline extends Component {
         endDate,
       );
       this.setState({ barChartData: data });
+      clearMessages();
+      addMessage('График успешно построен!');
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -73,6 +78,7 @@ class Timeline extends Component {
         dateError:
           'The difference between the start date and the current date must be no less than 30 days and no more than 50 days',
       });
+      this.context.clearMessages();
     }
   };
 

@@ -1,11 +1,17 @@
 import React, { useContext } from 'react';
 import SuccessMessageContext from '../../context/SuccessMessageContext';
-import './styles.css';
+import { Message } from './styles';
 
 const SuccessMessage = () => {
-  const { message } = useContext(SuccessMessageContext);
+  const { messages } = useContext(SuccessMessageContext);
 
-  return <div className="success-message">{message && <p>{message}</p>}</div>;
+  return (
+    <div className="success-message">
+      {messages.map((message, index) => (
+        <Message key={index}>{message}</Message>
+      ))}
+    </div>
+  );
 };
 
 export default SuccessMessage;

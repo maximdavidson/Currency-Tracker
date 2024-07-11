@@ -73,14 +73,6 @@ export const LoadingDot3 = styled.span`
   margin: 0 2px;
 `;
 
-export const SuccessMessage = styled.div`
-  position: fixed;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #4caf50;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  z-index: 1000;
+export const Message = styled.span`
+  color: rgba(70, 184, 48, 0.8);
 `;

@@ -1,6 +1,7 @@
 import React from 'react';
 import SimpleSelect from '../Select/SimpleSelect';
 import { ModalOverlay, Modal, CloseButton } from './styles';
+import SuccessMessage from '../../SuccessMessage';
 
 class ChartModal extends React.Component {
   constructor(props) {
@@ -65,6 +66,7 @@ class ChartModal extends React.Component {
             value={endDate.toISOString().split('T')[0]}
             readOnly
           />
+          <SuccessMessage />
         </Modal>
       </ModalOverlay>
     );

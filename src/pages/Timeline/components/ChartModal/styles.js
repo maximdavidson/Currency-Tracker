@@ -33,6 +33,7 @@ export const Modal = styled.div`
     display: block;
     margin-top: 10px;
     font-size: 16px;
+    color: rgba(65, 71, 64, 0.8);
   }
 
   input {

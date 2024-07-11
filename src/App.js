@@ -9,6 +9,7 @@ import Contacts from './pages/Contacts/Contacts';
 import BankCard from './pages/BankCard/BankCard';
 import ErrorBoundary from './utils/ErrorBoundary';
 import Footer from './components/Footer/Footer';
+import { SuccessMessageProvider } from './context/SuccessMessageContext';
 
 function App() {
   return (
@@ -16,13 +17,15 @@ function App() {
       <ThemeProvider>
         <GlobalStyles />
         <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/timeline" element={<Timeline />} />
-          <Route path="/bank-card" element={<BankCard />} />
-          <Route path="/contacts" element={<Contacts />} />
-        </Routes>
-        <Footer />
+        <SuccessMessageProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/timeline" element={<Timeline />} />
+            <Route path="/bank-card" element={<BankCard />} />
+            <Route path="/contacts" element={<Contacts />} />
+          </Routes>
+          <Footer />
+        </SuccessMessageProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );
