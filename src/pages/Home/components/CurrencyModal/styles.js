@@ -77,3 +77,11 @@ export const Input = styled.input`
   border-radius: 4px;
   box-sizing: border-box;
 `;
+
+export const Name = styled.h2`
+  color: rgba(65, 71, 64, 0.8);
+`;
+
+export const Cost = styled.p`
+  color: rgba(65, 71, 64, 0.8);
+`;

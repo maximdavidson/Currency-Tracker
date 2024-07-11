@@ -7,7 +7,7 @@ export const SuccessMessageProvider = ({ children }) => {
 
   const addMessage = (message) => {
     const filteredMessages = messages.filter(
-      (msg) => !msg.startsWith('График успешно построен!'),
+      (msg) => !msg.startsWith('The graph has been successfully built!'),
     );
     setMessages([...filteredMessages, message]);
   };

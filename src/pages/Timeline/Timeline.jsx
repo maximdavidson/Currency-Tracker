@@ -10,7 +10,7 @@ import {
   LoadingDot2,
   LoadingDot3,
 } from './styles';
-import SuccessMessageContext from '../../context/SuccessMessageContext';
+import SuccessMessageContext from '@context/SuccessMessageContext';
 
 class Timeline extends Component {
   static contextType = SuccessMessageContext;
@@ -56,7 +56,7 @@ class Timeline extends Component {
       );
       this.setState({ barChartData: data });
       clearMessages();
-      addMessage('График успешно построен!');
+      addMessage('The graph has been successfully built!');
     } catch (error) {
       console.error('Error fetching data:', error);
     }

@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export const Container = styled.div`
   padding-left: 131px;
@@ -62,7 +63,7 @@ export const HeaderImgWrap = styled.div`
   }
 `;
 
-export const HeaderImg = styled.img`
+export const HeaderImg = styled(LazyLoadImage)`
   @media (max-width: 900px) {
     max-width: 100%;
   }

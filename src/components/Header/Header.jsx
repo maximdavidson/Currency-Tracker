@@ -59,16 +59,24 @@ function Header() {
           <DesktopMenu>
             <Ul>
               <li>
-                <StyledLink to="/">Home</StyledLink>
+                <StyledLink to="/" activeClassName="activeLink">
+                  Home
+                </StyledLink>
               </li>
               <li>
-                <StyledLink to="/timeline">Timeline</StyledLink>
+                <StyledLink to="/timeline" activeClassName="activeLink">
+                  Timeline
+                </StyledLink>
               </li>
               <li>
-                <StyledLink to="/bank-card">Bank card</StyledLink>
+                <StyledLink to="/bank-card" activeClassName="activeLink">
+                  Bank card
+                </StyledLink>
               </li>
               <li>
-                <StyledLink to="/contacts">Contacts</StyledLink>
+                <StyledLink to="/contacts" activeClassName="activeLink">
+                  Contacts
+                </StyledLink>
               </li>
             </Ul>
           </DesktopMenu>

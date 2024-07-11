@@ -7,6 +7,8 @@ import {
   ModalBody,
   ModalFooter,
   Input,
+  Name,
+  Cost,
 } from './styles';
 import { getConvertedAmount } from './getConvertedAmount';
 
@@ -40,7 +42,7 @@ const CurrencyModal = ({ isOpen, onClose, currency, currencyRates }) => {
     <Modal onClick={handleClickOutside}>
       <ModalContent>
         <ModalHeader>
-          <h2>{currency.name}</h2>
+          <Name>{currency.name}</Name>
         </ModalHeader>
         <ModalBody>
           <Input
@@ -49,10 +51,10 @@ const CurrencyModal = ({ isOpen, onClose, currency, currencyRates }) => {
             onChange={handleAmountChange}
             min="0"
           />
-          <p>
+          <Cost>
             {amount} {currency.name} is approximately {convertedAmount}{' '}
             {selectedCurrency}
-          </p>
+          </Cost>
           <select value={selectedCurrency} onChange={handleCurrencyChange}>
             {Object.keys(currencyRates).map((key) => (
               <option key={key} value={key}>

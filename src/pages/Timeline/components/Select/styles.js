@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export const SelectContainer = styled.div`
   margin-left: 96px;
@@ -56,7 +57,7 @@ export const CurrencyDetails = styled.div`
   border-radius: 5px;
 `;
 
-export const CurrencyImage = styled.img`
+export const CurrencyImage = styled(LazyLoadImage)`
   width: 70px;
   margin-right: 20px;
 `;

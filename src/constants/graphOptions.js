@@ -6,7 +6,7 @@ export const GRAPH_OPTIONS = {
     },
     title: {
       display: true,
-      text: 'Candlestick Chart',
+      text: 'Chart',
     },
     tooltip: {
       position: 'nearest',
@@ -48,7 +48,7 @@ export const GRAPH_OPTIONS = {
       title: {
         display: true,
         text: 'Date',
-        color: 'black',
+        color: 'gray',
         font: {
           size: 16,
         },
