@@ -21,7 +21,12 @@ class Select extends React.Component {
 
     return (
       <SelectContainer>
-        <SelectDropdown onChange={onChange} value={value} vector={vector}>
+        <SelectDropdown
+          onChange={onChange}
+          value={value}
+          vector={vector}
+          data-testid="select-dropdown"
+        >
           {currencies.map((currency) => (
             <option key={currency.code} value={currency.code}>
               {currency.name}

@@ -32,7 +32,12 @@ class Graph extends Component {
 
     return (
       <ChartContainer>
-        <ReactChart type="candlestick" data={data} options={GRAPH_OPTIONS} />
+        <ReactChart
+          type="candlestick"
+          data={data}
+          options={GRAPH_OPTIONS}
+          data-testid="graph"
+        />
       </ChartContainer>
     );
   }

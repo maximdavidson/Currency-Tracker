@@ -11,7 +11,7 @@ const CurrencyCard = ({ image, alt, name, rate, onClick }) => {
   }, []);
 
   return (
-    <Card onClick={onClick} data-aos="fade-up">
+    <Card onClick={onClick} data-testid="currency-card" data-aos="fade-up">
       <CardImage src={image} alt={alt} />
       <Text>
         <Name>

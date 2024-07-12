@@ -120,7 +120,10 @@ class Timeline extends Component {
           value={firstCurrency}
           onChange={(e) => this.setState({ firstCurrency: e.target.value })}
         />
-        <ButtonChange onClick={this.handleModalOpen}>
+        <ButtonChange
+          onClick={this.handleModalOpen}
+          data-testid="change-parameters-button"
+        >
           Change parameters
         </ButtonChange>
 

@@ -39,7 +39,7 @@ const CurrencyModal = ({ isOpen, onClose, currency, currencyRates }) => {
   if (!isOpen) return null;
 
   return (
-    <Modal onClick={handleClickOutside}>
+    <Modal onClick={handleClickOutside} data-testid="currency-modal">
       <ModalContent>
         <ModalHeader>
           <Name>{currency.name}</Name>
@@ -50,12 +50,17 @@ const CurrencyModal = ({ isOpen, onClose, currency, currencyRates }) => {
             value={amount}
             onChange={handleAmountChange}
             min="0"
+            data-testid="amount-input"
           />
           <Cost>
             {amount} {currency.name} is approximately {convertedAmount}{' '}
             {selectedCurrency}
           </Cost>
-          <select value={selectedCurrency} onChange={handleCurrencyChange}>
+          <select
+            value={selectedCurrency}
+            onChange={handleCurrencyChange}
+            data-testid="currency-select"
+          >
             {Object.keys(currencyRates).map((key) => (
               <option key={key} value={key}>
                 {key}
@@ -64,7 +69,9 @@ const CurrencyModal = ({ isOpen, onClose, currency, currencyRates }) => {
           </select>
         </ModalBody>
         <ModalFooter>
-          <button onClick={onClose}>Close</button>
+          <button onClick={onClose} data-testid="close-button">
+            Close
+          </button>
         </ModalFooter>
       </ModalContent>
     </Modal>

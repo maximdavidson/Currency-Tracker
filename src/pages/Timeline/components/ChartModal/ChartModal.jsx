@@ -45,21 +45,29 @@ class ChartModal extends React.Component {
 
     return (
       <ModalOverlay>
-        <Modal ref={this.modalRef}>
-          <CloseButton onClick={onClose}>X</CloseButton>
+        <Modal ref={this.modalRef} data-testid="currency-modal">
+          <CloseButton onClick={onClose} data-testid="close-button">
+            X
+          </CloseButton>
           <label>Second currency:</label>
           <SimpleSelect
             options={availableCurrencies}
             value={secondCurrency}
             onChange={(e) => setSecondCurrency(e.target.value)}
+            data-testid="currency-select"
           />
           <label>Start Date:</label>
           <input
             type="date"
             onChange={handleStartDateChange}
             value={startDate.toISOString().split('T')[0]}
+            data-testid="start-date-input"
           />
-          {dateError && <div style={{ color: 'red' }}>{dateError}</div>}
+          {dateError && (
+            <div style={{ color: 'red' }} data-testid="date-error">
+              {dateError}
+            </div>
+          )}
           <label>Today</label>
           <input
             type="date"
