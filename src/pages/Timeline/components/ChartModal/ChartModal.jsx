@@ -1,6 +1,6 @@
 import React from 'react';
 import SimpleSelect from '../Select/SimpleSelect';
-import { ModalOverlay, Modal, CloseButton } from './styles';
+import { ModalOverlay, Modal, CloseButton, DateError } from './styles';
 import SuccessMessage from '../../SuccessMessage';
 
 class ChartModal extends React.Component {
@@ -64,9 +64,7 @@ class ChartModal extends React.Component {
             data-testid="start-date-input"
           />
           {dateError && (
-            <div style={{ color: 'red' }} data-testid="date-error">
-              {dateError}
-            </div>
+            <DateError data-testid="date-error">{dateError}</DateError>
           )}
           <label>Today</label>
           <input

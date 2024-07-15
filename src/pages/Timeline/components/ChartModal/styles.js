@@ -60,3 +60,7 @@ export const CloseButton = styled.button`
   top: 10px;
   right: 10px;
 `;
+
+export const DateError = styled.div`
+  color: red;
+`;
