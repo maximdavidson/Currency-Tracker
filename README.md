@@ -1,70 +1,67 @@
 # Modsen Currency Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## О приложении
 
-Веб-приложение Modsen Currency Tracker предоставляет возможность отслеживания изменения курса валют с течением времени. Приложение разработано с использованием библиотеки React. Оно взаимодействует с открытыми API, xnj,s gjkexfnm drnefkmyst lfyyst j rehcf[ dfk.n ]
+Веб-приложение Modsen Currency Tracker предоставляет возможность отслеживания изменения курса валют с течением времени. Приложение разработано с использованием библиотеки React. Оно взаимодействует с открытыми API.
 
-### `npm start`
+## Установка и запуск проекта
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Чтобы запустить этот проект локально, следуйте следующим инструкциям:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Клонирование проекта**
 
-### `npm test`
+   Сначала клонируйте репозиторий на свой локальный компьютер. Для этого откройте терминал и введите следующую команду:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   git clone <URL репозитория>
+   ```
 
-### `npm run build`
+2. **Установка зависимостей**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   Перейдите в каталог проекта и установите необходимые зависимости с помощью npm (или yarn):
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   cd <название проекта>
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   или если вы используете yarn:
 
-### `npm run eject`
+   ```bash
+   cd <название проекта>
+   yarn
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Запуск проекта**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   Запустите проект с помощью следующей команды:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   npm start
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   или если вы используете yarn:
 
-## Learn More
+   ```bash
+   yarn start
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   Теперь ваше приложение должно быть доступно по адресу `http://localhost:3000` (если порт 3000 не занят).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Используемые технологии
 
-### Code Splitting
+### Для react
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **_node.js_** - программная платформа, основанная на движке V8 (транслирующем JavaScript в машинный код).
+- **_babel_** - транспайлер, преобразующий код из одного стандарта в другой.
+- **_axios_** - библиотека для создания асинхронных запросов.
+- **_chart-js_** - javascript библиотека для построения диаграмм.
+- **_mapbox-gl_** - библиотека для построения интерактивной карты.
+- **_eslint_** - линтер для JavaScript кода.
+- **_yarn_** - менеджер пакетов.
+- **_react_** - JavaScript-библиотека для создания пользовательских интерфейсов.
+- **_webpack_** - сборщик модулей, который позволяет скомпилировать JavaScript-модули в единый JS-файл.
+- **_prop-types_** - набор валидаторов, которые могут быть использованы для проверки получаемых данных.
+- **_redux_** - инструмент для управления состоянием данных и пользовательским интерфейсом в приложениях.
+- **_cypress_** — e2e тестирование для веб приложений.
+- **_jest_** — unit-тестирование

@@ -2,6 +2,7 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Wrapper, MapContainer } from './styles';
+import PropTypes from 'prop-types';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoibWF4aW1kYXZpZHNvbiIsImEiOiJjbHluMDl3YTYwMTV4MnFyM20xYzc5bmowIn0.ZSWv34EHZKQP_5ywH-e4ng';
@@ -85,5 +86,22 @@ class Map extends React.Component {
     );
   }
 }
+
+Map.propTypes = {
+  userLocation: PropTypes.shape({
+    lon: PropTypes.number.isRequired,
+    lat: PropTypes.number.isRequired,
+  }).isRequired,
+  banks: PropTypes.arrayOf(
+    PropTypes.shape({
+      location: PropTypes.shape({
+        lon: PropTypes.number,
+        lat: PropTypes.number,
+      }),
+      name: PropTypes.string,
+      currencies: PropTypes.string,
+    }),
+  ).isRequired,
+};
 
 export default Map;

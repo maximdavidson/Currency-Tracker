@@ -10,6 +10,7 @@ import {
   SuggestionItem,
 } from './styles';
 import search from '@assets/search.png';
+import PropTypes from 'prop-types';
 
 class Search extends Component {
   state = {
@@ -105,5 +106,9 @@ class Search extends Component {
     );
   }
 }
+
+Search.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+};
 
 export default Search;

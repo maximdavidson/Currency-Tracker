@@ -36,7 +36,7 @@ module.exports = {
           ['@utils', './src/utils'],
           ['@pages', './src/pages'],
           ['@theme', './src/theme'],
-          ['@services', './src/theme'],
+          ['@services', './src/services'],
           ['@constants', './src/constants'],
           ['@hooks', './src/hooks'],
           ['@context', './src/context'],
