@@ -1,10 +1,10 @@
-# Getting Started with Create React App
+# Modsen Currency Tracker
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## О приложении
 
-In the project directory, you can run:
+Веб-приложение Modsen Currency Tracker предоставляет возможность отслеживания изменения курса валют с течением времени. Приложение разработано с использованием библиотеки React. Оно взаимодействует с открытыми API, xnj,s gjkexfnm drnefkmyst lfyyst j rehcf[ dfk.n ]
 
 ### `npm start`
 

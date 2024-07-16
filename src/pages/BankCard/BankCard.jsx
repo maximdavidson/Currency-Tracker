@@ -4,8 +4,9 @@ import Map from './components/Map/Map';
 import LocationService from '../../services/LocationService';
 import { generateRandomLocations } from './LocationUtils';
 import { banks } from '@constants/bankData';
+import Loading from '@constants/Loading/Loading';
 
-export class BankCard extends Component {
+class BankCard extends Component {
   state = {
     userLocation: null,
     banks: banks,
@@ -25,10 +26,6 @@ export class BankCard extends Component {
       { userLocation: { lat: latitude, lon: longitude } },
       this.generateBankLocations,
     );
-  };
-
-  onErrorGetCurrentPosition = (error) => {
-    console.error('Error getting geolocation:', error);
   };
 
   generateBankLocations = () => {
@@ -56,7 +53,7 @@ export class BankCard extends Component {
         {userLocation !== null ? (
           <Map userLocation={userLocation} banks={banksToDisplay} />
         ) : (
-          <p>Loading user location...</p>
+          <Loading />
         )}
       </div>
     );

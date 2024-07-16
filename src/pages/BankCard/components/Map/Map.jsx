@@ -1,49 +1,89 @@
 import React from 'react';
-import { YMaps, Placemark } from '@pbe/react-yandex-maps';
-import { Wrapper, MapContainer, StyledYandexMap } from './styles';
+import mapboxgl from 'mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
+import { Wrapper, MapContainer } from './styles';
 
-const Map = ({ banks, userLocation }) => {
-  const mapCenter = userLocation
-    ? [userLocation.lat, userLocation.lon]
-    : [40.712776, -74.005974];
+mapboxgl.accessToken =
+  'pk.eyJ1IjoibWF4aW1kYXZpZHNvbiIsImEiOiJjbHluMDl3YTYwMTV4MnFyM20xYzc5bmowIn0.ZSWv34EHZKQP_5ywH-e4ng';
 
-  return (
-    <Wrapper>
-      <MapContainer>
-        <YMaps query={{ apikey: 'c432584d-e2fa-4fe4-ad7d-7a3d682621cbs' }}>
-          <StyledYandexMap state={{ center: mapCenter, zoom: 12 }}>
-            <Placemark
-              geometry={mapCenter}
-              properties={{
-                hintContent: 'You are here',
-                balloonContent: 'This is your current location',
-              }}
-              options={{
-                preset: 'islands#blueCircleDotIconWithCaption',
-                iconCaptionMaxWidth: '50',
-              }}
-            />
-            {banks.map(
-              (bank) =>
-                bank.location && (
-                  <Placemark
-                    key={bank.id}
-                    geometry={[bank.location.lat, bank.location.lon]}
-                    properties={{
-                      hintContent: bank.name,
-                      balloonContent: `<strong>${bank.name}</strong><br/>${bank.address}`,
-                    }}
-                    options={{
-                      preset: 'islands#redIcon',
-                    }}
-                  />
-                ),
-            )}
-          </StyledYandexMap>
-        </YMaps>
-      </MapContainer>
-    </Wrapper>
-  );
-};
+class Map extends React.Component {
+  constructor(props) {
+    super(props);
+    this.mapContainer = React.createRef();
+  }
+
+  componentDidMount() {
+    this.map = new mapboxgl.Map({
+      container: this.mapContainer.current,
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [this.props.userLocation.lon, this.props.userLocation.lat],
+      zoom: 12,
+    });
+
+    new mapboxgl.Marker({ color: 'blue' })
+      .setLngLat([this.props.userLocation.lon, this.props.userLocation.lat])
+      .setPopup(new mapboxgl.Popup().setText('You are here'))
+      .addTo(this.map);
+
+    this.map.on('load', () => {
+      if (this.map.getSource('banks')) {
+        this.map.removeSource('banks');
+      }
+
+      this.map.addSource('banks', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: this.props.banks
+            .filter(
+              (bank) => bank.location && bank.location.lon && bank.location.lat,
+            )
+            .map((bank) => ({
+              type: 'Feature',
+              geometry: {
+                type: 'Point',
+                coordinates: [bank.location.lon, bank.location.lat],
+              },
+              properties: {
+                title: bank.name,
+                description: bank.currencies,
+              },
+            })),
+        },
+      });
+
+      this.props.banks.forEach((bank) => {
+        if (bank.location && bank.location.lon && bank.location.lat) {
+          new mapboxgl.Marker({ color: 'red' })
+            .setLngLat([bank.location.lon, bank.location.lat])
+            .setPopup(
+              new mapboxgl.Popup().setHTML(
+                `<strong>${bank.name}</strong><br/>${bank.currencies}`,
+              ),
+            )
+            .addTo(this.map);
+        }
+      });
+    });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.banks !== this.props.banks) {
+      this.componentDidMount();
+    }
+  }
+
+  componentWillUnmount() {
+    this.map.remove();
+  }
+
+  render() {
+    return (
+      <Wrapper>
+        <MapContainer ref={this.mapContainer} />
+      </Wrapper>
+    );
+  }
+}
 
 export default Map;

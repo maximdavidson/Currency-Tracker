@@ -3,14 +3,9 @@ import Select from './components/Select/Select';
 import Graph from './components/Graph/Graph';
 import ChartModal from './components/ChartModal/ChartModal';
 import { fetchData } from '@services/apiChart';
-import {
-  ButtonChange,
-  LoadingDots,
-  LoadingDot1,
-  LoadingDot2,
-  LoadingDot3,
-} from './styles';
+import { ButtonChange, Message } from './styles';
 import SuccessMessageContext from '@context/SuccessMessageContext';
+import Loading from '@constants/Loading/Loading';
 
 class Timeline extends Component {
   static contextType = SuccessMessageContext;
@@ -90,19 +85,6 @@ class Timeline extends Component {
     this.setState({ isModalOpen: false });
   };
 
-  renderLoading() {
-    return (
-      <>
-        <LoadingDots>
-          Loading
-          <LoadingDot1>.</LoadingDot1>
-          <LoadingDot2>.</LoadingDot2>
-          <LoadingDot3>.</LoadingDot3>
-        </LoadingDots>
-      </>
-    );
-  }
-
   renderContent() {
     const {
       isModalOpen,
@@ -144,11 +126,10 @@ class Timeline extends Component {
       </>
     );
   }
-
   render() {
     const { barChartData } = this.state;
 
-    return barChartData ? this.renderContent() : this.renderLoading();
+    return barChartData ? this.renderContent() : <Loading />;
   }
 }
 

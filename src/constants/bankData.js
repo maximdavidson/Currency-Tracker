@@ -2,7 +2,6 @@ export const banks = [
   {
     name: 'Belagroprombank',
     currencies: ['Commercial Dollar', 'Euro', 'Yuan'],
-    location: { lat: 52.52, lon: 13.405 },
   },
   {
     name: 'Belarusbank',
