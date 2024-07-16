@@ -31,7 +31,7 @@ const useCurrencyRates = () => {
           'https://api.currencyapi.com/v3/latest',
           {
             params: {
-              apikey: 'cur_live_o2rbtemJUuWv2CbvVXaz3Gmdfnh0HcRR1cHB4Xa', //R
+              apikey: 'cur_live_oUXxBapGtYuIOAoXFx7AqDV6fwyKP4HLMntI5ZPJ',
               base_currency: 'USD',
             },
           },

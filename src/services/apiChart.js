@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_KEY = 'A5A1446F-5AA8-41E4-ADF9-5DF72E4CAAF'; //C
+const API_KEY = '66A7E812-0449-49CC-84AC-5B95C8A157D1';
 const BASE_URL = 'https://rest.coinapi.io/v1/exchangerate';
 
 export const fetchData = async (
