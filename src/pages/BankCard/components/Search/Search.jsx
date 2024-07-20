@@ -12,7 +12,7 @@ import {
 import search from '@assets/search.png';
 import PropTypes from 'prop-types';
 
-class Search extends Component {
+export class Search extends Component {
   state = {
     searchTerm: '',
     searchResults: [],
@@ -110,5 +110,3 @@ class Search extends Component {
 Search.propTypes = {
   onSearch: PropTypes.func.isRequired,
 };
-
-export default Search;

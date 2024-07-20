@@ -14,7 +14,7 @@ import {
   FooterNote,
 } from './styles';
 
-function Footer() {
+export const Footer = () => {
   return (
     <FooterContainer>
       <Container>
@@ -57,6 +57,4 @@ function Footer() {
       </Container>
     </FooterContainer>
   );
-}
-
-export default Footer;
+};

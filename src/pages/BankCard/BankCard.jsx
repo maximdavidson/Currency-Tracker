@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Search from './components/Search/Search';
-import Map from './components/Map/Map';
+import { Search } from './components/Search/Search';
+import { Map } from './components/Map/Map';
 import LocationService from '../../services/LocationService';
 import { generateRandomLocations } from './LocationUtils';
 import { banks } from '@constants/bankData';
 import Loading from '@constants/Loading/Loading';
 
-class BankCard extends Component {
+export class BankCard extends Component {
   state = {
     userLocation: null,
     banks: banks,
@@ -59,5 +59,3 @@ class BankCard extends Component {
     );
   }
 }
-
-export default BankCard;

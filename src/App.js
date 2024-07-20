@@ -1,17 +1,17 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from './theme/ThemeContext';
+import { ThemeProvider } from '@theme/ThemeContext';
 import GlobalStyles from './GlobalStyles';
-import Header from './components/Header/Header';
-import Home from './pages/Home/Home';
-import Timeline from './pages/Timeline/Timeline';
-import Contacts from './pages/Contacts/Contacts';
-import BankCard from './pages/BankCard/BankCard';
-import ErrorBoundary from './utils/ErrorBoundary';
-import Footer from './components/Footer/Footer';
-import { SuccessMessageProvider } from './context/SuccessMessageContext';
+import Header from '@components/Header/Header';
+import Home from '@pages/Home/Home';
+import Timeline from '@pages/Timeline/Timeline';
+import { Contacts } from '@pages/Contacts/Contacts';
+import { BankCard } from '@pages/BankCard/BankCard';
+import { ErrorBoundary } from '@components/ErrorBoundary/ErrorBoundary';
+import { Footer } from '@components/Footer/Footer';
+import { SuccessMessageProvider } from '@context/SuccessMessageContext';
 
-function App() {
+export const App = () => {
   return (
     <ErrorBoundary>
       <ThemeProvider>
@@ -29,6 +29,4 @@ function App() {
       </ThemeProvider>
     </ErrorBoundary>
   );
-}
-
-export default App;
+};

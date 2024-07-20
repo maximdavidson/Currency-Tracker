@@ -1,6 +1,4 @@
-import { NavLink } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export const Container = styled.div`
   padding-left: 131px;
@@ -12,22 +10,6 @@ export const Container = styled.div`
   @media (max-width: 450px) {
     padding-left: 20px;
     padding-right: 20px;
-  }
-`;
-
-export const StyledLink = styled(NavLink)`
-  color: ${({ theme }) => theme.textColor};
-  text-decoration: none;
-
-  &:hover {
-    opacity: 0.7;
-  }
-  @media (max-width: 900px) {
-    font-size: 50px;
-    color: rgba(47, 79, 79);
-  }
-  @media (max-width: 900px) {
-    font-size: 40px;
   }
 `;
 
@@ -53,24 +35,6 @@ export const SwitchImg = styled.img`
   max-width: 40px;
   @media (max-width: 900px) {
     max-width: 35px;
-  }
-`;
-
-export const HeaderImgWrap = styled.div`
-  margin-left: 50px;
-  @media (max-width: 900px) {
-    margin-left: 10px;
-  }
-`;
-
-export const Ul = styled.ul`
-  display: flex;
-  align-items: center;
-  gap: 115px;
-  list-style-type: none;
-  @media (max-width: 900px) {
-    flex-direction: column;
-    gap: 20px;
   }
 `;
 

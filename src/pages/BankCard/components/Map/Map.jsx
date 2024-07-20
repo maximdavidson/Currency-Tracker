@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 mapboxgl.accessToken =
   'pk.eyJ1IjoibWF4aW1kYXZpZHNvbiIsImEiOiJjbHluMDl3YTYwMTV4MnFyM20xYzc5bmowIn0.ZSWv34EHZKQP_5ywH-e4ng';
 
-class Map extends React.Component {
+export class Map extends React.Component {
   constructor(props) {
     super(props);
     this.mapContainer = React.createRef();
@@ -99,9 +99,7 @@ Map.propTypes = {
         lat: PropTypes.number,
       }),
       name: PropTypes.string,
-      currencies: PropTypes.string,
+      currencies: PropTypes.arrayOf(PropTypes.string),
     }),
   ).isRequired,
 };
-
-export default Map;

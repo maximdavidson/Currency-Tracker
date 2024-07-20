@@ -1,7 +1,7 @@
 import React from 'react';
 import { Wrapper, Title, SubTitle, Text } from './styles';
 
-function Contacts() {
+export const Contacts = () => {
   return (
     <Wrapper>
       <Title>Contact Us</Title>
@@ -20,6 +20,4 @@ function Contacts() {
       <Text>Saturday - Sunday: Closed</Text>
     </Wrapper>
   );
-}
-
-export default Contacts;
+};

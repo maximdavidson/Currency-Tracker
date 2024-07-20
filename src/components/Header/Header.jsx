@@ -12,12 +12,9 @@ import closeIcon from '@assets/menuIcon-close.png';
 import diagram from '@assets/diagram.png';
 
 import {
-  StyledLink,
   Switch,
   SwitchImg,
-  Ul,
   Wrapper,
-  HeaderImgWrap,
   Container,
   LastUp,
   Text,
@@ -26,6 +23,7 @@ import {
   Menu,
   DesktopMenu,
 } from './styles';
+import NavBar from '../NavBar/NavBar';
 import './style.css';
 
 function Header() {
@@ -33,7 +31,6 @@ function Header() {
   const { toggleTheme, isDarkTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -57,28 +54,7 @@ function Header() {
             <img src={logo} alt="LOGO" />
           </div>
           <DesktopMenu>
-            <Ul>
-              <li>
-                <StyledLink to="/" activeClassName="activeLink">
-                  Home
-                </StyledLink>
-              </li>
-              <li>
-                <StyledLink to="/timeline" activeClassName="activeLink">
-                  Timeline
-                </StyledLink>
-              </li>
-              <li>
-                <StyledLink to="/bank-card" activeClassName="activeLink">
-                  Bank card
-                </StyledLink>
-              </li>
-              <li>
-                <StyledLink to="/contacts" activeClassName="activeLink">
-                  Contacts
-                </StyledLink>
-              </li>
-            </Ul>
+            <NavBar />
           </DesktopMenu>
           <Switch onClick={toggleTheme}>
             <SwitchImg src={isDarkTheme ? switchOff : switchOn} alt="switch" />
@@ -91,30 +67,7 @@ function Header() {
         </Wrapper>
         <Menu isOpen={isOpen}>
           <nav>
-            <Ul>
-              {!isHomePage && (
-                <li>
-                  <StyledLink to="/" onClick={toggleMenu}>
-                    Home
-                  </StyledLink>
-                </li>
-              )}
-              <li>
-                <StyledLink to="/timeline" onClick={toggleMenu}>
-                  Timeline
-                </StyledLink>
-              </li>
-              <li>
-                <StyledLink to="/bank-card" onClick={toggleMenu}>
-                  Bank card
-                </StyledLink>
-              </li>
-              <li>
-                <StyledLink to="/contacts" onClick={toggleMenu}>
-                  Contacts
-                </StyledLink>
-              </li>
-            </Ul>
+            <NavBar onClick={toggleMenu} />
           </nav>
         </Menu>
       </Container>

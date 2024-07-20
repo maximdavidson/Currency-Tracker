@@ -5,6 +5,7 @@ export const lightTheme = {
   nameColor: 'rgba(255, 255, 255, 1)',
   CardBackground: 'rgba(54, 54, 59, 1)',
   сurrencyName: 'rgba(0, 0, 0, 1)',
+  searchBackground: 'rgba(60, 58, 63, 1)',
 };
 
 export const darkTheme = {
@@ -14,4 +15,5 @@ export const darkTheme = {
   nameColor: 'rgba(255, 255, 255, 1)',
   CardBackground: 'rgba(32, 32, 37, 1)',
   сurrencyName: 'rgba(217, 217, 217, 1)',
+  searchBackground: 'rgba(27, 32, 40, 1)',
 };
