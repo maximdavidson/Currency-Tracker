@@ -5,11 +5,11 @@ import { useTheme } from '@theme/ThemeContext';
 import logo from '@assets/logo.png';
 import switchOff from '@assets/switchOff.png';
 import switchOn from '@assets/switchOn.png';
-import headerImg from '@assets/Header.png';
 import circleImg from '@assets/circleupdate.png';
 import menuIcon from '@assets/menuIcon.png';
 import menuIconDark from '@assets/menuIcon-dark.png';
 import closeIcon from '@assets/menuIcon-close.png';
+import diagram from '@assets/diagram.png';
 
 import {
   StyledLink,
@@ -25,8 +25,8 @@ import {
   BurgerIcon,
   Menu,
   DesktopMenu,
-  HeaderImg,
 } from './styles';
+import './style.css';
 
 function Header() {
   const { lastUpdate } = useCurrencyRates();
@@ -118,9 +118,19 @@ function Header() {
           </nav>
         </Menu>
       </Container>
-      <HeaderImgWrap>
-        <HeaderImg src={headerImg} alt="Image" />
-      </HeaderImgWrap>
+      <div className={`header-wrapper ${isDarkTheme ? '' : 'light-theme'}`}>
+        <div className="text-side">
+          <h1 className="wrap-title">
+            Modsen Currency <span className="wrap-title-line">Tracker</span>
+            <span
+              className={`wrap-title-line-sec ${isDarkTheme ? '' : 'light-theme'}`}
+            >
+              Quotes for the dollar and other international currencies.
+            </span>
+          </h1>
+        </div>
+        <img className="diagram" src={diagram} alt="diagram" />
+      </div>
       <LastUp>
         <PulsatingCircle src={circleImg} alt="Image" />
         <Text>Last updated at {formatDate(lastUpdate)}</Text>

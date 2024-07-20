@@ -7,7 +7,7 @@ export const SelectContainer = styled.div`
 `;
 
 export const SelectDropdown = styled.select`
-  color: rgba(217, 217, 217, 1);
+  color: ${({ theme }) => theme.сurrencyName};
   padding: 10px 50px 10px 10px;
   border-radius: 5px;
   border: none;

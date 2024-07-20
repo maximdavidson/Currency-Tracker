@@ -40,7 +40,7 @@ export const Cards = styled.div`
 export const Card = styled.div`
   cursor: pointer;
   width: 480px;
-  background: rgba(32, 32, 37, 1);
+  background: ${({ theme }) => theme.CardBackground};
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -60,6 +60,7 @@ export const Name = styled.p`
   font-size: 30px;
   font-weight: 400;
   line-height: 49.37px;
+  color: ${({ theme }) => theme.nameColor};
   @media (max-width: 450px) {
     font-size: 26px;
   }

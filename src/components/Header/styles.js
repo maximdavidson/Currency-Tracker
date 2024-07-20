@@ -63,15 +63,6 @@ export const HeaderImgWrap = styled.div`
   }
 `;
 
-export const HeaderImg = styled(LazyLoadImage)`
-  @media (max-width: 900px) {
-    max-width: 100%;
-  }
-  @media (max-width: 450px) {
-    max-width: 150%;
-  }
-`;
-
 export const Ul = styled.ul`
   display: flex;
   align-items: center;
