@@ -1,22 +1,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { CURRENCIES, INITIAL_CURRENCY_RATES } from '@constants/currencies';
 
-const useCurrencyRates = () => {
+export const useCurrencyRates = () => {
   const [currencyRates, setCurrencyRates] = useState(() => {
     const cachedRates = localStorage.getItem('currentRates');
-    return cachedRates
-      ? JSON.parse(cachedRates)
-      : {
-          USD: null,
-          CAD: null,
-          AUD: null,
-          EUR: null,
-          GBP: null,
-          ARS: null,
-          JPY: null,
-          CNY: null,
-          BTC: null,
-        };
+    return cachedRates ? JSON.parse(cachedRates) : INITIAL_CURRENCY_RATES;
   });
 
   const [lastUpdate, setLastUpdate] = useState(() => {
@@ -31,26 +20,19 @@ const useCurrencyRates = () => {
           'https://api.currencyapi.com/v3/latest',
           {
             params: {
-              apikey: 'cur_live_oUXxBapGtYuIOAoXFx7AqDV6fwyKP4HLMntI5ZPJ',
+              apikey: process.env.REACT_APP_CURRENCY_API_KEY,
               base_currency: 'USD',
             },
           },
         );
 
         const { data } = response;
-        const rates = data.data;
+        const rates = CURRENCIES.reduce((acc, currency) => {
+          acc[currency] = data.data[currency];
+          return acc;
+        }, {});
 
-        setCurrencyRates({
-          USD: rates.USD,
-          CAD: rates.CAD,
-          AUD: rates.AUD,
-          EUR: rates.EUR,
-          GBP: rates.GBP,
-          ARS: rates.ARS,
-          JPY: rates.JPY,
-          CNY: rates.CNY,
-          BTC: rates.BTC,
-        });
+        setCurrencyRates(rates);
 
         const now = new Date();
         setLastUpdate(now);
@@ -76,5 +58,3 @@ const useCurrencyRates = () => {
 
   return { currencyRates, lastUpdate };
 };
-
-export default useCurrencyRates;

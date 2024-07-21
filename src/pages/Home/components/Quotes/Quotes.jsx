@@ -1,12 +1,12 @@
 import React, { useState, useMemo, useCallback } from 'react';
-import useCurrencyRates from '@hooks/useCurrencyRates';
-import CurrencyCard from './CurrencyCard';
+import { useCurrencyRates } from '@hooks/useCurrencyRates';
+import { CurrencyCard } from './CurrencyCard';
 import CurrencyModal from '../CurrencyModal/CurrencyModal';
 import rectangle from '@assets/Rectangle.png';
 import { Container, Wrapper, Title, Image, Cards } from './styles';
 import { currencyData } from '@constants/currencyDataConstant';
 
-const Quotes = () => {
+export const Quotes = () => {
   const { currencyRates } = useCurrencyRates();
   const [selectedCurrency, setSelectedCurrency] = useState(null);
 
@@ -49,5 +49,3 @@ const Quotes = () => {
     </Container>
   );
 };
-
-export default Quotes;

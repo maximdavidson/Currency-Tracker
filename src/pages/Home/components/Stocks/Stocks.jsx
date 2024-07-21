@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import rectangle from '@assets/Rectangle.png';
 import ifix from '@assets/IFIX.png';
 import bovespa from '@assets/Bovespa.png';
-import initAOS from '@constants/aosConfig';
+
 import {
   Container,
   Wrapper,
@@ -16,11 +16,7 @@ import {
   Rate,
 } from './styles';
 
-const Stocks = () => {
-  useEffect(() => {
-    initAOS();
-  }, []);
-
+export const Stocks = () => {
   return (
     <Container>
       <Wrapper>
@@ -49,5 +45,3 @@ const Stocks = () => {
     </Container>
   );
 };
-
-export default Stocks;

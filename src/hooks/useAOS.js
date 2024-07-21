@@ -1,0 +1,10 @@
+import { useEffect } from 'react';
+import initAOS from '@config/aosConfig';
+
+const useAOS = () => {
+  useEffect(() => {
+    initAOS();
+  }, []);
+};
+
+export default useAOS;

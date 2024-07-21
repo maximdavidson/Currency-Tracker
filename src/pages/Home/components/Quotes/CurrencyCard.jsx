@@ -1,15 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardImage, Text, Name, Rate } from './styles';
-import initAOS from '@constants/aosConfig';
-
 const formatRate = (rate) => (rate ? rate.value : 'Loading...');
 
-const CurrencyCard = ({ image, alt, name, rate, onClick }) => {
-  useEffect(() => {
-    initAOS();
-  }, []);
-
+export const CurrencyCard = ({ image, alt, name, rate, onClick }) => {
   return (
     <Card onClick={onClick} data-testid="currency-card" data-aos="fade-up">
       <CardImage src={image} alt={alt} />
@@ -32,5 +26,3 @@ CurrencyCard.propTypes = {
   }),
   onClick: PropTypes.func.isRequired,
 };
-
-export default CurrencyCard;

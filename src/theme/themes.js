@@ -3,7 +3,7 @@ export const lightTheme = {
   bodyColor: 'rgba(0, 0, 0, 1)',
   textColor: 'rgba(0, 0, 0, 1)',
   nameColor: 'rgba(255, 255, 255, 1)',
-  CardBackground: 'rgba(54, 54, 59, 1)',
+  CardBackground: 'rgba(74, 74, 79, 1)',
   сurrencyName: 'rgba(0, 0, 0, 1)',
   searchBackground: 'rgba(60, 58, 63, 1)',
 };

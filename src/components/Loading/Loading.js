@@ -1,7 +1,7 @@
 import React from 'react';
 import { LoadingDots, LoadingDot1, LoadingDot2, LoadingDot3 } from './styles';
 
-const Loading = () => (
+export const Loading = () => (
   <LoadingDots>
     Loading
     <LoadingDot1>.</LoadingDot1>
@@ -9,5 +9,3 @@ const Loading = () => (
     <LoadingDot3>.</LoadingDot3>
   </LoadingDots>
 );
-
-export default Loading;

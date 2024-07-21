@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '@assets/logo.png';
 import name from '@assets/ModsenCurrencyTracker.png';
+import { linkSections } from '@constants/footerLinkes.js';
 import {
   FooterContainer,
   Container,
@@ -33,24 +34,17 @@ export const Footer = () => {
           </HistorySide>
 
           <LinkSide>
-            <div>
-              <Title>General</Title>
-              <Link href="#!">Market</Link>
-              <br />
-              <Link href="#!">Service</Link>
-            </div>
-            <div>
-              <Title>Product</Title>
-              <Link href="#!">Sparks</Link>
-              <br />
-              <Link href="#!">Snaps</Link>
-            </div>
-            <div>
-              <Title>Community</Title>
-              <Link href="#!">Ideas</Link>
-              <br />
-              <Link href="#!">Streams</Link>
-            </div>
+            {linkSections.map((section) => (
+              <div key={section.title}>
+                <Title>{section.title}</Title>
+                {section.links.map((link) => (
+                  <React.Fragment key={link}>
+                    <Link href="#!">{link}</Link>
+                    <br />
+                  </React.Fragment>
+                ))}
+              </div>
+            ))}
           </LinkSide>
         </Wrapper>
         <FooterNote>Startsup © 2023-2024, All Rights Reserved</FooterNote>

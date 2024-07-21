@@ -15,6 +15,7 @@ module.exports = {
     '^@constants/(.*)$': '<rootDir>/src/constants/$1',
     '^@hooks/(.*)$': '<rootDir>/src/hooks/$1',
     '^@context/(.*)$': '<rootDir>/src/context/$1',
+    '^@config/(.*)$': '<rootDir>/src/config/$1',
   },
   transformIgnorePatterns: ['/node_modules/', '\\.pnp\\.[^\\/]+$'],
 };

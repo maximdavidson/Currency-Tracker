@@ -1,14 +1,15 @@
 import React from 'react';
-import Stocks from './components/Stocks/Stocks';
-import Quotes from './components/Quotes/Quotes';
+import { Stocks } from './components/Stocks/Stocks';
+import { Quotes } from './components/Quotes/Quotes';
+import useAOS from '@hooks/useAOS';
 
-function Home() {
+export const Home = () => {
+  useAOS();
+
   return (
     <div>
       <Stocks />
       <Quotes />
     </div>
   );
-}
-
-export default Home;
+};

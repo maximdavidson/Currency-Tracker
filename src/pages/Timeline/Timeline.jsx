@@ -5,7 +5,7 @@ import ChartModal from './components/ChartModal/ChartModal';
 import { fetchData } from '@services/apiChart';
 import { ButtonChange, Message } from './styles';
 import SuccessMessageContext from '@context/SuccessMessageContext';
-import Loading from '@constants/Loading/Loading';
+import { Loading } from '@components/Loading/Loading';
 
 class Timeline extends Component {
   static contextType = SuccessMessageContext;

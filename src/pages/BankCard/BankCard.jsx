@@ -4,7 +4,7 @@ import { Map } from './components/Map/Map';
 import LocationService from '../../services/LocationService';
 import { generateRandomLocations } from './LocationUtils';
 import { banks } from '@constants/bankData';
-import Loading from '@constants/Loading/Loading';
+import { Loading } from '@components/Loading/Loading';
 
 export class BankCard extends Component {
   state = {

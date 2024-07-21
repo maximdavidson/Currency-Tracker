@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@theme/ThemeContext';
 import GlobalStyles from './GlobalStyles';
 import Header from '@components/Header/Header';
-import Home from '@pages/Home/Home';
+import { Home } from '@pages/Home/Home';
 import Timeline from '@pages/Timeline/Timeline';
 import { Contacts } from '@pages/Contacts/Contacts';
 import { BankCard } from '@pages/BankCard/BankCard';

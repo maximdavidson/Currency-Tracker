@@ -40,6 +40,7 @@ module.exports = {
           ['@constants', './src/constants'],
           ['@hooks', './src/hooks'],
           ['@context', './src/context'],
+          ['@config', './src/config'],
         ],
         extensions: ['.js', '.jsx', '.json'],
       },
