@@ -11,6 +11,7 @@ import {
 } from './styles';
 import search from '@assets/search.png';
 import PropTypes from 'prop-types';
+import { CURRENCIES } from '@constants/currencyConstants';
 
 export class Search extends Component {
   state = {
@@ -19,20 +20,9 @@ export class Search extends Component {
     showSuggestions: false,
   };
 
-  currencies = [
-    'Commercial Dollar',
-    'Canadian Dollar',
-    'Australian Dollar',
-    'Euro',
-    'Libra',
-    'Argentinian Peso',
-    'Yen',
-    'Yuan',
-  ];
-
   handleInputChange = (event) => {
     const searchTerm = event.target.value;
-    const searchResults = this.currencies.filter((currency) =>
+    const searchResults = CURRENCIES.filter((currency) =>
       currency.toLowerCase().includes(searchTerm.toLowerCase()),
     );
     this.setState({ searchTerm, searchResults, showSuggestions: true });

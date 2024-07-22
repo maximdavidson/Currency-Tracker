@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import Select from './components/Select/Select';
 import Graph from './components/Graph/Graph';
 import ChartModal from './components/ChartModal/ChartModal';
-import { fetchData } from '@services/apiChart';
-import { ButtonChange, Message } from './styles';
+import { fetchData } from '@api/TimelineApi/apiChart';
+import { fetchDataWithCache } from '@api/TimelineApi/fetchDataWithCache';
+import { ButtonChange } from './styles';
 import SuccessMessageContext from '@context/SuccessMessageContext';
 import { Loading } from '@components/Loading/Loading';
 
@@ -43,7 +44,7 @@ class Timeline extends Component {
     const { firstCurrency, secondCurrency, startDate, endDate } = this.state;
     const { addMessage, clearMessages } = this.context;
     try {
-      const data = await fetchData(
+      const data = await fetchDataWithCache(
         firstCurrency,
         secondCurrency,
         startDate,

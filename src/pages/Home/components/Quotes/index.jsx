@@ -1,7 +1,7 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useCurrencyRates } from '@hooks/useCurrencyRates';
-import { CurrencyCard } from './CurrencyCard';
-import CurrencyModal from '../CurrencyModal/CurrencyModal';
+import { CurrencyCard } from '../CurrencyCard';
+import CurrencyModal from '../CurrencyModal';
 import rectangle from '@assets/Rectangle.png';
 import { Container, Wrapper, Title, Image, Cards } from './styles';
 import { currencyData } from '@constants/currencyDataConstant';
@@ -10,15 +10,13 @@ export const Quotes = () => {
   const { currencyRates } = useCurrencyRates();
   const [selectedCurrency, setSelectedCurrency] = useState(null);
 
-  const openModal = useCallback((currency) => {
+  const selectCurrency = useCallback((currency) => {
     setSelectedCurrency(currency);
   }, []);
 
-  const closeModal = useCallback(() => {
+  const deselectCurrency = useCallback(() => {
     setSelectedCurrency(null);
   }, []);
-
-  const memoizedCurrencyData = useMemo(() => currencyData, []);
 
   return (
     <Container>
@@ -26,22 +24,21 @@ export const Quotes = () => {
         <Title>Quotes</Title>
         <Image src={rectangle} alt="rectangle" />
         <Cards>
-          {memoizedCurrencyData.map((currency) => (
+          {currencyData.map((currency) => (
             <CurrencyCard
               key={currency.key}
               image={currency.image}
               alt={currency.alt}
               name={currency.name}
               rate={currencyRates[currency.key]}
-              onClick={() => openModal(currency)}
+              onClick={() => selectCurrency(currency)}
             />
           ))}
         </Cards>
       </Wrapper>
       {selectedCurrency && (
         <CurrencyModal
-          isOpen={!!selectedCurrency}
-          onClose={closeModal}
+          onClose={deselectCurrency}
           currency={selectedCurrency}
           currencyRates={currencyRates}
         />

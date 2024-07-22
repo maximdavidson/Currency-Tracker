@@ -10,9 +10,11 @@ import {
   Name,
   Cost,
 } from './styles';
-import { getConvertedAmount } from './getConvertedAmount';
+import { getConvertedAmount } from '@utils/utilGetConvertedAmount';
 
-const CurrencyModal = ({ isOpen, onClose, currency, currencyRates }) => {
+const CurrencyModal = ({ onClose, currency, currencyRates }) => {
+  if (!currency) return null;
+
   const [selectedCurrency, setSelectedCurrency] = useState(currency.key);
   const [amount, setAmount] = useState(1);
 
@@ -35,8 +37,6 @@ const CurrencyModal = ({ isOpen, onClose, currency, currencyRates }) => {
       onClose();
     }
   };
-
-  if (!isOpen) return null;
 
   return (
     <Modal onClick={handleClickOutside} data-testid="currency-modal">
@@ -79,9 +79,8 @@ const CurrencyModal = ({ isOpen, onClose, currency, currencyRates }) => {
 };
 
 CurrencyModal.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  currency: PropTypes.object.isRequired,
+  currency: PropTypes.object,
   currencyRates: PropTypes.object.isRequired,
 };
 

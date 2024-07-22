@@ -1,28 +1,33 @@
-import axios from 'axios';
+import { fetchData } from './apiChart'; // Импортируйте fetchData из файла apiChart
 
-const API_KEY = '66A7E812-0449-49CC-84AC-5B95C8A157D1';
-const BASE_URL = 'https://rest.coinapi.io/v1/exchangerate';
+const getCacheKey = (firstCurrency, secondCurrency, startDate, endDate) => {
+  return `${firstCurrency}/${secondCurrency}_${startDate.toISOString()}_${endDate.toISOString()}`;
+};
 
-export const fetchData = async (
+export const fetchDataWithCache = async (
   firstCurrency,
   secondCurrency,
   startDate,
   endDate,
 ) => {
-  const currencyPair = `${firstCurrency}/${secondCurrency}`;
-  const url = `${BASE_URL}/${currencyPair}/history?period_id=1DAY&time_start=${startDate.toISOString()}&time_end=${endDate.toISOString()}&limit=50`;
-
-  const cacheKey = `${currencyPair}_${startDate.toISOString()}_${endDate.toISOString()}`;
+  const cacheKey = getCacheKey(
+    firstCurrency,
+    secondCurrency,
+    startDate,
+    endDate,
+  );
   const cachedData = localStorage.getItem(cacheKey);
 
   if (cachedData) {
     return JSON.parse(cachedData);
   } else {
     try {
-      const response = await axios.get(url, {
-        headers: { 'X-CoinAPI-Key': API_KEY },
-      });
-      const data = response.data;
+      const data = await fetchData(
+        firstCurrency,
+        secondCurrency,
+        startDate,
+        endDate,
+      );
 
       const chartData = {
         datasets: [

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardImage, Text, Name, Rate } from './styles';
-const formatRate = (rate) => (rate ? rate.value : 'Loading...');
 
 export const CurrencyCard = ({ image, alt, name, rate, onClick }) => {
   return (
@@ -10,7 +9,7 @@ export const CurrencyCard = ({ image, alt, name, rate, onClick }) => {
       <Text>
         <Name>
           {name} <br />
-          <Rate>{formatRate(rate)}</Rate>
+          <Rate>{rate ? rate.value : 'Loading...'}</Rate>
         </Name>
       </Text>
     </Card>

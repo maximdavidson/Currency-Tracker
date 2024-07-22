@@ -16,7 +16,8 @@
           "@constants": "./src/constants",
           "@hooks": "./src/hooks",
           "@context": "./src/context",
-          "@config": "./src/config"
+          "@config": "./src/config",
+          "@api": "./src/api"
         }
       }
     ]
