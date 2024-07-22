@@ -22,13 +22,19 @@ import {
   BurgerIcon,
   Menu,
   DesktopMenu,
+  StyledHeader,
+  HeaderText,
+  HeaderTitle,
+  HeaderTitleSpan,
+  HeaderSubtitleWrapper,
+  HeaderSubtitle,
+  Diagram,
 } from './styles';
 import NavBar from '../NavBar/NavBar';
-import './style.css';
 
 export const Header = () => {
   const { lastUpdate } = useCurrencyRates();
-  const { toggleTheme, isDarkTheme } = useTheme();
+  const { toggleTheme, isDarkTheme, theme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
@@ -71,19 +77,19 @@ export const Header = () => {
           </nav>
         </Menu>
       </Container>
-      <div className={`header-wrapper ${isDarkTheme ? '' : 'light-theme'}`}>
-        <div className="text-side">
-          <h1 className="wrap-title">
-            Modsen Currency <span className="wrap-title-line">Tracker</span>
-            <span
-              className={`wrap-title-line-sec ${isDarkTheme ? '' : 'light-theme'}`}
-            >
+      <StyledHeader>
+        <HeaderText>
+          <HeaderTitle>
+            Modsen Currency <HeaderTitleSpan>Tracker</HeaderTitleSpan>
+          </HeaderTitle>
+          <HeaderSubtitleWrapper>
+            <HeaderSubtitle>
               Quotes for the dollar and other international currencies.
-            </span>
-          </h1>
-        </div>
-        <img className="diagram" src={diagram} alt="diagram" />
-      </div>
+            </HeaderSubtitle>
+          </HeaderSubtitleWrapper>
+        </HeaderText>
+        <Diagram src={diagram} alt="diagram" />
+      </StyledHeader>
       <LastUp>
         <PulsatingCircle src={circleImg} alt="Image" />
         <Text>Last updated at {formatDate(lastUpdate)}</Text>

@@ -1,17 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 
-export const Container = styled.div`
-  padding-left: 131px;
-  padding-right: 120px;
-  @media (max-width: 900px) {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  @media (max-width: 450px) {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-`;
+export const Container = styled.div``;
 
 export const Wrapper = styled.div`
   display: flex;
@@ -45,8 +34,7 @@ export const LastUp = styled.div`
   margin: 56px auto;
   gap: 10px;
 
-  @media (max-width: 900px) {
-    margin-right: -150px;
+  @media (max-width: 450px) {
   }
 `;
 
@@ -125,5 +113,89 @@ export const DesktopMenu = styled.nav`
   padding-left: 150px;
   @media (max-width: 900px) {
     display: none;
+  }
+`;
+
+export const StyledHeader = styled.div`
+  margin-top: 10px;
+  display: flex;
+
+  align-items: center;
+  padding: 0 65px;
+  max-width: 100%;
+  background: ${(props) => props.theme.headerBackground};
+
+  @media (max-width: 900px) {
+    gap: 50px;
+  }
+
+  @media (max-width: 450px) {
+    gap: 170px;
+  }
+`;
+
+export const HeaderText = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const HeaderTitle = styled.h1`
+  font-size: 74px;
+  font-weight: 600;
+  background: linear-gradient(
+    90.18deg,
+    #00ce2c 0.18%,
+    #aedf23 49.3%,
+    #a3dc00 99.88%
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: right;
+
+  @media (max-width: 900px) {
+    font-size: 64px;
+  }
+
+  @media (max-width: 450px) {
+    font-size: 34px;
+  }
+`;
+
+export const HeaderTitleSpan = styled.span`
+  display: block;
+`;
+
+export const HeaderSubtitleWrapper = styled.div`
+  display: flex;
+  justify-content: end;
+  margin-top: -60px;
+`;
+
+export const HeaderSubtitle = styled.p`
+  font-size: 23px;
+  font-weight: 300;
+  line-height: 46px;
+  max-width: 389px;
+  text-align: center;
+  color: ${(props) => props.theme.textColor};
+
+  @media (max-width: 900px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 450px) {
+    font-size: 12px;
+  }
+`;
+
+export const Diagram = styled.img`
+  max-width: 100%;
+
+  @media (max-width: 900px) {
+    max-width: 300px;
+  }
+
+  @media (max-width: 450px) {
+    max-width: 150px;
   }
 `;
