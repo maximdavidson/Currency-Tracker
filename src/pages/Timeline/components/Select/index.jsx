@@ -12,7 +12,7 @@ import {
   ChartButton,
 } from './styles';
 
-class Select extends React.Component {
+export class Select extends React.Component {
   render() {
     const { value, onChange } = this.props;
     const selectedCurrency = currencies.find(
@@ -49,5 +49,3 @@ class Select extends React.Component {
     );
   }
 }
-
-export default Select;

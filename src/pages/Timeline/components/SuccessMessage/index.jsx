@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import SuccessMessageContext from '@context/SuccessMessageContext';
+import { SuccessMessageContext } from '@context/SuccessMessageContext';
 import { Message } from './styles';
 
-const SuccessMessage = () => {
+export const SuccessMessage = () => {
   const { messages } = useContext(SuccessMessageContext);
 
   return (
@@ -13,5 +13,3 @@ const SuccessMessage = () => {
     </>
   );
 };
-
-export default SuccessMessage;

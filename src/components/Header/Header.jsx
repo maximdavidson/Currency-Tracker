@@ -26,7 +26,7 @@ import {
 import NavBar from '../NavBar/NavBar';
 import './style.css';
 
-function Header() {
+export const Header = () => {
   const { lastUpdate } = useCurrencyRates();
   const { toggleTheme, isDarkTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
@@ -90,6 +90,4 @@ function Header() {
       </LastUp>
     </header>
   );
-}
-
-export default Header;
+};

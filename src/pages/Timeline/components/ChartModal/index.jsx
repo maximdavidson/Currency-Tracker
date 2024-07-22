@@ -1,9 +1,9 @@
 import React from 'react';
-import SimpleSelect from '../Select/SimpleSelect';
+import { SimpleSelect } from '../SimpleSelect';
 import { ModalOverlay, Modal, CloseButton, DateError } from './styles';
-import SuccessMessage from '../../SuccessMessage';
+import { SuccessMessage } from '../SuccessMessage';
 
-class ChartModal extends React.Component {
+export class ChartModal extends React.Component {
   constructor(props) {
     super(props);
     this.modalRef = React.createRef();
@@ -78,5 +78,3 @@ class ChartModal extends React.Component {
     );
   }
 }
-
-export default ChartModal;

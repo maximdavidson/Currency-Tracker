@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Select from './components/Select/Select';
-import Graph from './components/Graph/Graph';
-import ChartModal from './components/ChartModal/ChartModal';
-import { fetchData } from '@api/TimelineApi/apiChart';
-import { fetchDataWithCache } from '@api/TimelineApi/fetchDataWithCache';
+import { Select } from './components/Select';
+import { Graph } from './components/Graph';
+import { ChartModal } from './components/ChartModal';
+import { getData } from '@utils/utilGetData';
 import { ButtonChange } from './styles';
-import SuccessMessageContext from '@context/SuccessMessageContext';
+import { SuccessMessageContext } from '@context/SuccessMessageContext';
 import { Loading } from '@components/Loading/Loading';
+import { handleStartDateChange } from '@utils/utilHandleStartDateChange';
 
-class Timeline extends Component {
+export class Timeline extends Component {
   static contextType = SuccessMessageContext;
 
   constructor(props) {
@@ -25,7 +25,7 @@ class Timeline extends Component {
   }
 
   componentDidMount() {
-    this.getData();
+    this.loadData();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -36,46 +36,13 @@ class Timeline extends Component {
       startDate !== prevState.startDate ||
       endDate !== prevState.endDate
     ) {
-      this.getData();
+      this.loadData();
     }
   }
 
-  async getData() {
-    const { firstCurrency, secondCurrency, startDate, endDate } = this.state;
+  loadData = () => {
     const { addMessage, clearMessages } = this.context;
-    try {
-      const data = await fetchDataWithCache(
-        firstCurrency,
-        secondCurrency,
-        startDate,
-        endDate,
-      );
-      this.setState({ barChartData: data });
-      clearMessages();
-      addMessage('The graph has been successfully built!');
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  }
-
-  checkDateDifference(newStartDate) {
-    const { endDate } = this.state;
-    const differenceInTime = endDate.getTime() - newStartDate.getTime();
-    const differenceInDays = differenceInTime / (1000 * 3600 * 24);
-    return differenceInDays >= 30 && differenceInDays <= 50;
-  }
-
-  handleStartDateChange = (e) => {
-    const newStartDate = new Date(e.target.value);
-    if (this.checkDateDifference(newStartDate)) {
-      this.setState({ startDate: newStartDate, dateError: null });
-    } else {
-      this.setState({
-        dateError:
-          'The difference between the start date and the current date must be no less than 30 days and no more than 50 days',
-      });
-      this.context.clearMessages();
-    }
+    getData(this.state, this.setState.bind(this), addMessage, clearMessages);
   };
 
   handleModalOpen = () => {
@@ -86,7 +53,7 @@ class Timeline extends Component {
     this.setState({ isModalOpen: false });
   };
 
-  renderContent() {
+  render() {
     const {
       isModalOpen,
       barChartData,
@@ -96,9 +63,16 @@ class Timeline extends Component {
       endDate,
       dateError,
     } = this.state;
+    const { clearMessages } = this.context;
+
+    const handleStartDateChangeWithContext = handleStartDateChange(
+      this.state,
+      this.setState.bind(this),
+      clearMessages,
+    );
 
     return (
-      <>
+      <div>
         <Select
           value={firstCurrency}
           onChange={(e) => this.setState({ firstCurrency: e.target.value })}
@@ -118,20 +92,13 @@ class Timeline extends Component {
             this.setState({ secondCurrency: value })
           }
           startDate={startDate}
-          handleStartDateChange={this.handleStartDateChange}
+          handleStartDateChange={handleStartDateChangeWithContext}
           endDate={endDate}
           dateError={dateError}
         />
 
-        <Graph data={barChartData} />
-      </>
+        {barChartData ? <Graph data={barChartData} /> : <Loading />}
+      </div>
     );
   }
-  render() {
-    const { barChartData } = this.state;
-
-    return barChartData ? this.renderContent() : <Loading />;
-  }
 }
-
-export default Timeline;

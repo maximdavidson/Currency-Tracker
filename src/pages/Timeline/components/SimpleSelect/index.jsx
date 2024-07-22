@@ -1,7 +1,7 @@
 import React from 'react';
 import currencies from '@constants/CurrenciesSelectConstant';
 
-class SimpleSelect extends React.Component {
+export class SimpleSelect extends React.Component {
   render() {
     const { value, onChange } = this.props;
 
@@ -18,5 +18,3 @@ class SimpleSelect extends React.Component {
     );
   }
 }
-
-export default SimpleSelect;

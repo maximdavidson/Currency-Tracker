@@ -1,18 +1,12 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import React, { createContext, useContext } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './themes';
+import { useStickyState } from '../hooks/useStickyState';
 
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [isDarkTheme, setIsDarkTheme] = useState(() => {
-    const savedTheme = localStorage.getItem('theme');
-    return savedTheme ? savedTheme === 'dark' : true;
-  });
-
-  useEffect(() => {
-    localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light');
-  }, [isDarkTheme]);
+  const [isDarkTheme, setIsDarkTheme] = useStickyState(true, 'theme'); // Используем новый хук
 
   const toggleTheme = () => {
     setIsDarkTheme((prevTheme) => !prevTheme);

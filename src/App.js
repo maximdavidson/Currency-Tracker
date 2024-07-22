@@ -1,10 +1,10 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@theme/ThemeContext';
-import GlobalStyles from './GlobalStyles';
-import Header from '@components/Header/Header';
+import { GlobalStyles } from './GlobalStyles';
+import { Header } from '@components/Header/Header';
 import { Home } from '@pages/Home';
-import Timeline from '@pages/Timeline/Timeline';
+import { Timeline } from '@pages/Timeline';
 import { Contacts } from '@pages/Contacts';
 import { BankCard } from '@pages/BankCard';
 import { ErrorBoundary } from '@components/ErrorBoundary/ErrorBoundary';

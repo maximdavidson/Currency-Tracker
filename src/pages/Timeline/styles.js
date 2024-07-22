@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 export const ButtonChange = styled.button`
   cursor: pointer;
@@ -12,8 +12,4 @@ export const ButtonChange = styled.button`
   font-size: 18px;
   margin-bottom: 150px;
   color: rgba(255, 255, 255, 0.693);
-`;
-
-export const Message = styled.span`
-  color: rgba(70, 184, 48, 0.8);
 `;

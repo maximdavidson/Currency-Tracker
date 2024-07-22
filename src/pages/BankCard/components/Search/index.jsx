@@ -14,42 +14,50 @@ import PropTypes from 'prop-types';
 import { CURRENCIES } from '@constants/currencyConstants';
 
 export class Search extends Component {
-  state = {
-    searchTerm: '',
-    searchResults: [],
-    showSuggestions: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchTerm: '',
+      searchResults: [],
+      showSuggestions: false,
+    };
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleSuggestionClick = this.handleSuggestionClick.bind(this);
+    this.handleContainerClick = this.handleContainerClick.bind(this);
+    this.handleOutsideClick = this.handleOutsideClick.bind(this);
+  }
 
-  handleInputChange = (event) => {
+  handleInputChange(event) {
     const searchTerm = event.target.value;
     const searchResults = CURRENCIES.filter((currency) =>
       currency.toLowerCase().includes(searchTerm.toLowerCase()),
     );
     this.setState({ searchTerm, searchResults, showSuggestions: true });
-  };
+  }
 
-  handleFormSubmit = (event) => {
+  handleFormSubmit(event) {
     event.preventDefault();
     this.props.onSearch(this.state.searchTerm);
-  };
+  }
 
-  handleSuggestionClick = (suggestion) => {
+  handleSuggestionClick(suggestion) {
     this.setState({
       searchTerm: suggestion,
       searchResults: [],
       showSuggestions: false,
     });
-  };
+  }
 
-  handleContainerClick = () => {
+  handleContainerClick() {
     this.setState({ showSuggestions: true });
-  };
+  }
 
-  handleOutsideClick = (event) => {
+  handleOutsideClick(event) {
     if (this.containerRef && !this.containerRef.contains(event.target)) {
       this.setState({ showSuggestions: false });
     }
-  };
+  }
 
   componentDidMount() {
     document.addEventListener('click', this.handleOutsideClick);

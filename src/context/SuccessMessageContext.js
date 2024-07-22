@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 
-const SuccessMessageContext = createContext();
+export const SuccessMessageContext = createContext();
 
 export const SuccessMessageProvider = ({ children }) => {
   const [messages, setMessages] = useState([]);
@@ -24,5 +24,3 @@ export const SuccessMessageProvider = ({ children }) => {
     </SuccessMessageContext.Provider>
   );
 };
-
-export default SuccessMessageContext;

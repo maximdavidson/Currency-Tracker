@@ -1,9 +1,7 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-const initAOS = () => {
+export const initAOS = () => {
   AOS.init();
   AOS.refresh();
 };
-
-export default initAOS;

@@ -26,7 +26,7 @@ Chart.register(
   Title,
 );
 
-class Graph extends Component {
+export class Graph extends Component {
   render() {
     const { data } = this.props;
 
@@ -42,5 +42,3 @@ class Graph extends Component {
     );
   }
 }
-
-export default Graph;

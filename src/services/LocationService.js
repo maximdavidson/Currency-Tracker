@@ -1,4 +1,4 @@
-class LocationService {
+export class LocationService {
   static getUserLocation(successCallback, errorCallback) {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
@@ -7,5 +7,3 @@ class LocationService {
     }
   }
 }
-
-export default LocationService;
