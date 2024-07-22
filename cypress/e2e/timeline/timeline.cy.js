@@ -1,6 +1,7 @@
 describe('Timeline Page', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/timeline');
+    const appHost = Cypress.env('APP_HOST') || 'http://localhost:3000';
+    cy.visit(`${appHost}/timeline`);
   });
 
   it('should change parameters and check graph rendering', () => {

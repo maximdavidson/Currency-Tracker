@@ -1,4 +1,4 @@
-import { fetchData } from './apiChart'; // Импортируйте fetchData из файла apiChart
+import { fetchData } from './apiChart';
 
 const getCacheKey = (firstCurrency, secondCurrency, startDate, endDate) => {
   return `${firstCurrency}/${secondCurrency}_${startDate.toISOString()}_${endDate.toISOString()}`;

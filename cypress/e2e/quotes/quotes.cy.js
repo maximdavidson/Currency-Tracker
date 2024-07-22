@@ -1,6 +1,7 @@
 describe('Quotes Component', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/');
+    const appHost = Cypress.env('APP_HOST') || 'http://localhost:3000';
+    cy.visit(`${appHost}/`);
   });
 
   it('should open modal on card click, select currency, change amount and close modal', () => {
@@ -18,7 +19,7 @@ describe('Quotes Component', () => {
   it('should close modal when clicking outside of it', () => {
     cy.get('[data-testid="currency-card"]').first().click();
     cy.get('[data-testid="currency-modal"]').should('be.visible');
-    cy.get('[data-testid="currency-modal"]').click('topLeft');
+    cy.get('body').click(0, 0); // Clicks outside the modal
     cy.get('[data-testid="currency-modal"]').should('not.exist');
   });
 });

@@ -1,6 +1,7 @@
 describe('Header Component', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/');
+    const appHost = Cypress.env('APP_HOST') || 'http://localhost:3000';
+    cy.visit(`${appHost}/`);
   });
 
   it('should navigate to each link', () => {
@@ -24,7 +25,7 @@ describe('Header Component', () => {
         : 'light-theme';
 
       cy.get('img[alt="switch"]').click();
-      cy.get('img[alt="switch"]').click();
+      cy.get('body').should('not.have.class', initialThemeClass);
     });
   });
 });

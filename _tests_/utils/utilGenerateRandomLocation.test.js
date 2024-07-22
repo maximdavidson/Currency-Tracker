@@ -1,4 +1,6 @@
-const { generateRandomLocations } = require('@pages/BankCard/LocationUtils');
+const {
+  generateRandomLocations,
+} = require('@utils/utilGenerateRandomLocation');
 
 describe('generateRandomLocations', () => {
   it('should generate new locations for each bank', () => {

@@ -17,5 +17,9 @@ module.exports = {
     '^@context/(.*)$': '<rootDir>/src/context/$1',
     '^@api/(.*)$': '<rootDir>/src/api/$1',
   },
-  transformIgnorePatterns: ['/node_modules/', '\\.pnp\\.[^\\/]+$'],
+  transformIgnorePatterns: [
+    '/node_modules/',
+    '\\.pnp\\.[^\\/]+$',
+    '/node_modules/(?!(axios)/)',
+  ],
 };

@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// const API_KEY = process.env.REACT_APP_COINAPI_KEY;
 const API_KEY = '66A7E812-0449-49CC-84AC-5B95C8A157D1';
 const BASE_URL = 'https://rest.coinapi.io/v1/exchangerate';
 
