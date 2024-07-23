@@ -6,12 +6,12 @@ import {
   FooterContainer,
   Container,
   Wrapper,
-  HistorySide,
+  HistorySection,
   Image,
   Text,
-  LinkSide,
+  LinksSection,
   Title,
-  Link,
+  FooterLink,
   FooterNote,
 } from './styles';
 
@@ -20,7 +20,7 @@ export const Footer = () => {
     <FooterContainer>
       <Container>
         <Wrapper>
-          <HistorySide>
+          <HistorySection>
             <Image>
               <img src={logo} alt="Logo" />
               <img src={name} alt="Modsen Currency Tracker" />
@@ -31,21 +31,20 @@ export const Footer = () => {
               currency trading and 500,000 tickets sold daily to tens of
               thousands of traders worldwide.
             </Text>
-          </HistorySide>
+          </HistorySection>
 
-          <LinkSide>
+          <LinksSection>
             {linkSections.map((section) => (
-              <div key={section.title}>
+              <nav key={section.title}>
                 <Title>{section.title}</Title>
                 {section.links.map((link) => (
-                  <React.Fragment key={link}>
-                    <Link href="#!">{link}</Link>
-                    <br />
-                  </React.Fragment>
+                  <FooterLink key={link} href="#!">
+                    {link}
+                  </FooterLink>
                 ))}
-              </div>
+              </nav>
             ))}
-          </LinkSide>
+          </LinksSection>
         </Wrapper>
         <FooterNote>Startsup © 2023-2024, All Rights Reserved</FooterNote>
       </Container>

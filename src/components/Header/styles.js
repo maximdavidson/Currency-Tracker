@@ -1,8 +1,8 @@
 import styled, { keyframes } from 'styled-components';
 
-export const Container = styled.div``;
+export const Container = styled.main``;
 
-export const Wrapper = styled.div`
+export const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,18 +27,15 @@ export const SwitchImg = styled.img`
   }
 `;
 
-export const LastUp = styled.div`
+export const LastUpdate = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 56px auto;
   gap: 10px;
-
-  @media (max-width: 450px) {
-  }
 `;
 
-export const Text = styled.p`
+export const UpdateText = styled.p`
   font-size: 32.91px;
   font-weight: 300;
   line-height: 41.14px;
@@ -117,26 +114,30 @@ export const DesktopMenu = styled.nav`
 `;
 
 export const StyledHeader = styled.div`
-  margin-top: 10px;
   display: flex;
-
   align-items: center;
   padding: 0 65px;
   max-width: 100%;
+  gap: 70px;
   background: ${(props) => props.theme.headerBackground};
-
   @media (max-width: 900px) {
-    gap: 50px;
+    padding: 20px 10px;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 20px;
   }
-
   @media (max-width: 450px) {
-    gap: 170px;
+    padding: 15px 5px;
   }
 `;
 
-export const HeaderText = styled.div`
+export const HeaderContent = styled.div`
   display: flex;
   flex-direction: column;
+  @media (max-width: 900px) {
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 export const HeaderTitle = styled.h1`
@@ -154,6 +155,7 @@ export const HeaderTitle = styled.h1`
 
   @media (max-width: 900px) {
     font-size: 64px;
+    text-align: center;
   }
 
   @media (max-width: 450px) {
@@ -169,12 +171,16 @@ export const HeaderSubtitleWrapper = styled.div`
   display: flex;
   justify-content: end;
   margin-top: -60px;
+  @media (max-width: 900px) {
+    justify-content: center;
+    margin-top: -20px;
+  }
 `;
 
 export const HeaderSubtitle = styled.p`
   font-size: 23px;
   font-weight: 300;
-  line-height: 46px;
+  line-height: 1.5;
   max-width: 389px;
   text-align: center;
   color: ${(props) => props.theme.textColor};
@@ -193,9 +199,11 @@ export const Diagram = styled.img`
 
   @media (max-width: 900px) {
     max-width: 300px;
+    margin-top: 20px;
   }
 
   @media (max-width: 450px) {
     max-width: 150px;
+    margin-top: 10px;
   }
 `;

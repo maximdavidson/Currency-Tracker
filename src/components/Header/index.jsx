@@ -14,16 +14,16 @@ import diagram from '@assets/diagram.png';
 import {
   Switch,
   SwitchImg,
-  Wrapper,
+  HeaderWrapper,
   Container,
-  LastUp,
-  Text,
+  LastUpdate,
+  UpdateText,
   PulsatingCircle,
   BurgerIcon,
   Menu,
   DesktopMenu,
   StyledHeader,
-  HeaderText,
+  HeaderContent,
   HeaderTitle,
   HeaderTitleSpan,
   HeaderSubtitleWrapper,
@@ -39,8 +39,11 @@ export const Header = () => {
   const location = useLocation();
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
-    document.body.style.overflow = isOpen ? 'auto' : 'hidden';
+    setIsOpen((prevIsOpen) => {
+      const newIsOpen = !prevIsOpen;
+      document.body.style.overflow = newIsOpen ? 'hidden' : 'auto';
+      return newIsOpen;
+    });
   };
 
   const formatDate = (date) => {
@@ -55,10 +58,8 @@ export const Header = () => {
   return (
     <header>
       <Container>
-        <Wrapper>
-          <div className="logo">
-            <img src={logo} alt="LOGO" />
-          </div>
+        <HeaderWrapper>
+          <img src={logo} alt="LOGO" />
           <DesktopMenu>
             <NavBar />
           </DesktopMenu>
@@ -70,7 +71,7 @@ export const Header = () => {
             alt="Menu"
             onClick={toggleMenu}
           />
-        </Wrapper>
+        </HeaderWrapper>
         <Menu isOpen={isOpen}>
           <nav>
             <NavBar onClick={toggleMenu} />
@@ -78,7 +79,7 @@ export const Header = () => {
         </Menu>
       </Container>
       <StyledHeader>
-        <HeaderText>
+        <HeaderContent>
           <HeaderTitle>
             Modsen Currency <HeaderTitleSpan>Tracker</HeaderTitleSpan>
           </HeaderTitle>
@@ -87,13 +88,13 @@ export const Header = () => {
               Quotes for the dollar and other international currencies.
             </HeaderSubtitle>
           </HeaderSubtitleWrapper>
-        </HeaderText>
+        </HeaderContent>
         <Diagram src={diagram} alt="diagram" />
       </StyledHeader>
-      <LastUp>
+      <LastUpdate>
         <PulsatingCircle src={circleImg} alt="Image" />
-        <Text>Last updated at {formatDate(lastUpdate)}</Text>
-      </LastUp>
+        <UpdateText>Last updated at {formatDate(lastUpdate)}</UpdateText>
+      </LastUpdate>
     </header>
   );
 };

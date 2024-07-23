@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-export const Container = styled.div`
+export const Container = styled.main`
   padding-left: 131px;
   padding-right: 120px;
   @media (max-width: 450px) {
-    padding-left: 55px;
+    padding-left: 35px;
   }
 `;
 

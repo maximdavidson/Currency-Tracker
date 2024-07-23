@@ -30,7 +30,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const HistorySide = styled.div``;
+export const HistorySection = styled.section``;
 
 export const Image = styled.div`
   display: flex;
@@ -52,7 +52,7 @@ export const Text = styled.p`
   }
 `;
 
-export const LinkSide = styled.div`
+export const LinksSection = styled.section`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 78px;
@@ -61,7 +61,7 @@ export const LinkSide = styled.div`
   }
 `;
 
-export const Title = styled.p`
+export const Title = styled.h2`
   font-size: 28px;
   font-weight: 400;
   line-height: 42px;
@@ -72,7 +72,7 @@ export const Title = styled.p`
   }
 `;
 
-export const Link = styled.a`
+export const FooterLink = styled.a`
   color: rgba(137, 137, 137, 1);
   font-size: 24px;
   font-weight: 400;
