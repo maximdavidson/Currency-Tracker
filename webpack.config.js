@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -57,7 +58,22 @@ module.exports = {
       template: './public/index.html',
     }),
     new Dotenv({
-      path: './.env',
+      path: '.env',
+    }),
+    new webpack.DefinePlugin({
+      'process.env.MAPBOX_ACCESS_TOKEN': JSON.stringify(
+        process.env.REACT_APP_MAPBOX_ACCESS_TOKEN,
+      ),
+    }),
+    new webpack.DefinePlugin({
+      'process.env.REACT_APP_COIN_API_KEY': JSON.stringify(
+        process.env.REACT_APP_COIN_API_KEY,
+      ),
+    }),
+    new webpack.DefinePlugin({
+      'process.env.REACT_APP_CURRENCY_API_KEY': JSON.stringify(
+        process.env.REACT_APP_CURRENCY_API_KEY,
+      ),
     }),
   ],
 };

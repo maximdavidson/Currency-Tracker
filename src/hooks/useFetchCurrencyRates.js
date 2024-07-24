@@ -12,13 +12,11 @@ export const useFetchCurrencyRates = () => {
         'https://api.currencyapi.com/v3/latest',
         {
           params: {
-            // apikey: process.env.REACT_APP_CURRENCY_API_KEY,
-            apikey: 'cur_live_oUXxBapGtYuIOAoXFx7AqDV6fwyKP4HLMntI5ZPJ',
+            apikey: process.env.REACT_APP_CURRENCY_API_KEY,
             base_currency: 'USD',
           },
         },
       );
-
       const { data } = response;
       const rates = CURRENCIES.reduce((acc, currency) => {
         acc[currency] = data.data[currency];

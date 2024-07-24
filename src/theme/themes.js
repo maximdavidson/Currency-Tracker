@@ -21,3 +21,22 @@ export const darkTheme = {
   headerBackground:
     'linear-gradient(50deg, rgba(3, 3, 4, 1) 9%, rgba(0, 188, 79, 0.1803571770505077) 50%, rgba(3, 3, 4, 1) 89%)',
 };
+
+export const ownTheme = {
+  spacing: {
+    small: '8px',
+    medium: '16px',
+    large: '32px',
+    xlarge: '64px',
+  },
+  fontSize: {
+    h1: '32px',
+    h1Mobile: '28px',
+    p: '30px',
+    pMobile: '26px',
+    pSmall: '16px',
+  },
+  borderRadius: {
+    small: '8px',
+  },
+};

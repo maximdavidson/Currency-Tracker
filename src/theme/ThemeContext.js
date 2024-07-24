@@ -1,18 +1,20 @@
 import React, { createContext, useContext } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from './themes';
+import { lightTheme, darkTheme, ownTheme } from './themes';
 import { useStickyState } from '../hooks/useStickyState';
+import merge from 'lodash.merge';
 
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [isDarkTheme, setIsDarkTheme] = useStickyState(true, 'theme'); // Используем новый хук
+  const [isDarkTheme, setIsDarkTheme] = useStickyState(true, 'theme');
 
   const toggleTheme = () => {
     setIsDarkTheme((prevTheme) => !prevTheme);
   };
 
-  const theme = isDarkTheme ? darkTheme : lightTheme;
+  const currentTheme = isDarkTheme ? darkTheme : lightTheme;
+  const theme = merge({}, ownTheme, currentTheme);
 
   return (
     <ThemeContext.Provider value={{ isDarkTheme, toggleTheme }}>

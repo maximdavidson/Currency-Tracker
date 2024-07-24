@@ -1,3 +1,5 @@
+// Header.js
+
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useCurrencyRates } from '@hooks/useCurrencyRates';
@@ -9,7 +11,6 @@ import circleImg from '@assets/circleupdate.png';
 import menuIcon from '@assets/menuIcon.png';
 import menuIconDark from '@assets/menuIcon-dark.png';
 import closeIcon from '@assets/menuIcon-close.png';
-import diagram from '@assets/diagram.png';
 
 import {
   Switch,
@@ -22,15 +23,9 @@ import {
   BurgerIcon,
   Menu,
   DesktopMenu,
-  StyledHeader,
-  HeaderContent,
-  HeaderTitle,
-  HeaderTitleSpan,
-  HeaderSubtitleWrapper,
-  HeaderSubtitle,
-  Diagram,
 } from './styles';
 import NavBar from '../NavBar/NavBar';
+import { Section } from '../Section';
 
 export const Header = () => {
   const { lastUpdate } = useCurrencyRates();
@@ -78,19 +73,7 @@ export const Header = () => {
           </nav>
         </Menu>
       </Container>
-      <StyledHeader>
-        <HeaderContent>
-          <HeaderTitle>
-            Modsen Currency <HeaderTitleSpan>Tracker</HeaderTitleSpan>
-          </HeaderTitle>
-          <HeaderSubtitleWrapper>
-            <HeaderSubtitle>
-              Quotes for the dollar and other international currencies.
-            </HeaderSubtitle>
-          </HeaderSubtitleWrapper>
-        </HeaderContent>
-        <Diagram src={diagram} alt="diagram" />
-      </StyledHeader>
+      <Section />
       <LastUpdate>
         <PulsatingCircle src={circleImg} alt="Image" />
         <UpdateText>Last updated at {formatDate(lastUpdate)}</UpdateText>

@@ -32,7 +32,7 @@ export const Modal = styled.div`
   label {
     display: block;
     margin-top: 10px;
-    font-size: 16px;
+    font-size: ${({ theme }) => theme.fontSize.pSmall};
     color: rgba(65, 71, 64, 0.8);
   }
 
@@ -41,7 +41,7 @@ export const Modal = styled.div`
     width: 100%;
     margin-top: 10px;
     padding: 10px;
-    font-size: 16px;
+    font-size: ${({ theme }) => theme.fontSize.pSmall};
     border-radius: 4px;
     border: 1px solid #ccc;
     box-sizing: border-box;

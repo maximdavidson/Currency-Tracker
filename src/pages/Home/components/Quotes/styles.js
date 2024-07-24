@@ -12,11 +12,11 @@ export const Container = styled.main`
 export const Wrapper = styled.div``;
 
 export const Title = styled.h1`
-  font-size: 32px;
+  font-size: ${({ theme }) => theme.fontSize.h1};
   font-weight: 300;
   line-height: 41.14px;
   @media (max-width: 450px) {
-    font-size: 28px;
+    font-size: ${({ theme }) => theme.fontSize.h1Mobile};
   }
 `;
 
@@ -30,7 +30,7 @@ export const Cards = styled.div`
   @media (max-width: 900px) {
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 90px;
-    margin-left: 15px;
+    margin-left: ${({ theme }) => theme.spacing.medium};
   }
   @media (max-width: 450px) {
     grid-gap: 70px;

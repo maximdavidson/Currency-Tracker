@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-export const Container = styled.main`
+export const Container = styled.div`
   padding-left: 131px;
   padding-right: 120px;
   @media (max-width: 450px) {
@@ -12,18 +12,18 @@ export const Container = styled.main`
 export const Wrapper = styled.div``;
 
 export const Title = styled.h1`
-  font-size: 32px;
+  font-size: ${({ theme }) => theme.fontSize.h1};
   font-weight: 300;
   line-height: 41.14px;
   @media (max-width: 450px) {
-    font-size: 28px;
+    font-size: ${({ theme }) => theme.fontSize.h1Mobile};
   }
 `;
 
 export const Image = styled(LazyLoadImage)``;
 
 export const Cards = styled.div`
-  margin-top: 50px;
+  margin-top: ${({ theme }) => theme.spacing.large};
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 90px;
@@ -40,37 +40,37 @@ export const Cards = styled.div`
 export const Card = styled.div`
   width: 480px;
   background: ${({ theme }) => theme.CardBackground};
-  border-radius: 8px;
+  border-radius: ${({ theme }) => theme.borderRadius.small};
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: ${({ theme }) => theme.spacing.medium};
   @media (max-width: 450px) {
     width: 460px;
   }
 `;
 
 export const CardImage = styled(LazyLoadImage)`
-  padding-left: 32px;
+  padding-left: ${({ theme }) => theme.spacing.large};
 `;
 
 export const Text = styled.div``;
 
 export const Name = styled.p`
-  font-size: 30px;
+  font-size: ${({ theme }) => theme.fontSize.p};
   font-weight: 400;
   line-height: 49.37px;
   color: ${({ theme }) => theme.nameColor};
   @media (max-width: 450px) {
-    font-size: 26px;
+    font-size: ${({ theme }) => theme.fontSize.pMobile};
   }
 `;
 
 export const Rate = styled.span`
   color: rgba(167, 178, 195, 1);
-  font-size: 30px;
+  font-size: ${({ theme }) => theme.fontSize.p};
   font-weight: 300;
   line-height: 41.14px;
   @media (max-width: 450px) {
-    font-size: 26px;
+    font-size: ${({ theme }) => theme.fontSize.pMobile};
   }
 `;

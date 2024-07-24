@@ -4,9 +4,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { Wrapper, MapContainer } from './styles';
 import PropTypes from 'prop-types';
 
-mapboxgl.accessToken =
-  'pk.eyJ1IjoibWF4aW1kYXZpZHNvbiIsImEiOiJjbHluMDl3YTYwMTV4MnFyM20xYzc5bmowIn0.ZSWv34EHZKQP_5ywH-e4ng';
-
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 export class Map extends React.Component {
   constructor(props) {
     super(props);

@@ -43,7 +43,7 @@ export const Text = styled.p`
   font-size: 24px;
   font-weight: 300;
   line-height: 36px;
-  margin-top: 18px;
+  margin-top: ${({ theme }) => theme.spacing.medium};
   @media (max-width: 900px) {
     font-size: 22px;
   }
@@ -68,7 +68,7 @@ export const Title = styled.h2`
   padding-bottom: 20px;
   @media (max-width: 900px) {
     padding-bottom: 15px;
-    font-size: 26px;
+    font-size: ${({ theme }) => theme.fontSize.pMobile};
   }
 `;
 

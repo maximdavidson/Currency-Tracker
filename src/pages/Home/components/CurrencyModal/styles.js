@@ -15,7 +15,7 @@ export const Modal = styled.div`
 
 export const ModalContent = styled.div`
   background-color: rgba(255, 255, 255, 1);
-  border-radius: 8px;
+  border-radius: ${({ theme }) => theme.borderRadius.small};
   width: 400px;
   padding: 20px;
 `;
@@ -38,7 +38,7 @@ export const ModalBody = styled.div`
 
   p {
     margin: 0;
-    font-size: 16px;
+    font-size: ${({ theme }) => theme.fontSize.pSmall};
   }
 
   select {
