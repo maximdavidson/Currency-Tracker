@@ -13,7 +13,7 @@ export const useCurrencyRates = () => {
   const { data, error, fetchData } = useFetchCurrencyRates();
 
   useEffect(() => {
-    const twelveHours = 12 * 60 * 60 * 1000;
+    const twelveHours = 7 * 60 * 60 * 1000;
     const now = new Date();
     const isDataOutdated =
       !lastUpdate || now - new Date(lastUpdate) > twelveHours;
