@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export const usePersistentState = (
   key,
@@ -15,14 +15,17 @@ export const usePersistentState = (
     }
   });
 
-  const setPersistentState = (value) => {
-    try {
-      setState(value);
-      localStorage.setItem(key, JSON.stringify(value));
-    } catch (error) {
-      console.error(`Error setting localStorage key "${key}":`, error);
-    }
-  };
+  const setPersistentState = useCallback(
+    (value) => {
+      try {
+        setState(value);
+        localStorage.setItem(key, JSON.stringify(value));
+      } catch (error) {
+        console.error(`Error setting localStorage key "${key}":`, error);
+      }
+    },
+    [key],
+  );
 
   useEffect(() => {
     if (useEffectSync) {
@@ -33,6 +36,27 @@ export const usePersistentState = (
       }
     }
   }, [state, key, useEffectSync]);
+
+  useEffect(() => {
+    const handleStorageChange = (event) => {
+      if (event.key === key) {
+        try {
+          setState(event.newValue ? JSON.parse(event.newValue) : initialValue);
+        } catch (error) {
+          console.error(
+            `Error reading localStorage key "${key}" from event:`,
+            error,
+          );
+        }
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, [key, initialValue]);
 
   return [state, setPersistentState];
 };
