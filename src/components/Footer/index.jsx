@@ -8,6 +8,7 @@ import {
   Wrapper,
   HistorySection,
   Image,
+  Img,
   Text,
   LinksSection,
   Title,
@@ -22,8 +23,8 @@ export const Footer = () => {
         <Wrapper>
           <HistorySection>
             <Image>
-              <img src={logo} alt="Logo" />
-              <img src={name} alt="Modsen Currency Tracker" />
+              <Img src={logo} alt="Logo" />
+              <Img src={name} alt="Modsen Currency Tracker" />
             </Image>
             <Text>
               Since then, the company has grown organically to. Starsup is the

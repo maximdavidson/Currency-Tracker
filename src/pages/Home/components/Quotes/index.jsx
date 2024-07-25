@@ -24,14 +24,14 @@ export const Quotes = () => {
         <Title>Quotes</Title>
         <Image src={rectangle} alt="rectangle" />
         <Cards>
-          {currencyData.map((currency) => (
+          {currencyData.map(({ key, image, alt, name }) => (
             <CurrencyCard
-              key={currency.key}
-              image={currency.image}
-              alt={currency.alt}
-              name={currency.name}
-              rate={currencyRates[currency.key]}
-              onClick={() => selectCurrency(currency)}
+              key={key}
+              image={image}
+              alt={alt}
+              name={name}
+              rate={currencyRates[key]}
+              onClick={() => selectCurrency({ key, image, alt, name })}
             />
           ))}
         </Cards>

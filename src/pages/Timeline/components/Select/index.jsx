@@ -15,9 +15,7 @@ import {
 export class Select extends React.Component {
   render() {
     const { value, onChange } = this.props;
-    const selectedCurrency = currencies.find(
-      (currency) => currency.code === value,
-    );
+    const selectedCurrency = currencies.find(({ code }) => code === value);
 
     return (
       <SelectContainer>
@@ -27,9 +25,9 @@ export class Select extends React.Component {
           vector={vector}
           data-testid="select-dropdown"
         >
-          {currencies.map((currency) => (
-            <option key={currency.code} value={currency.code}>
-              {currency.name}
+          {currencies.map(({ code, name }) => (
+            <option key={code} value={code}>
+              {name}
             </option>
           ))}
         </SelectDropdown>

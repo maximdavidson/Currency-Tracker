@@ -18,6 +18,10 @@ export const ModalContent = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.small};
   width: 400px;
   padding: 20px;
+
+  @media (max-width: 480px) {
+    width: 300px;
+  }
 `;
 
 export const ModalHeader = styled.div`

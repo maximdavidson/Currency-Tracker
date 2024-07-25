@@ -9,13 +9,19 @@ export const Card = styled.div`
   display: flex;
   align-items: center;
   gap: 30px;
+  @media (max-width: 480px) {
+    width: 430px;
+  }
   @media (max-width: 450px) {
-    width: 460px;
+    width: 360px;
   }
 `;
 
 export const CardImage = styled(LazyLoadImage)`
   padding-left: ${({ theme }) => theme.spacing.large};
+  @media (max-width: 450px) {
+    width: 70px;
+  }
 `;
 
 export const Text = styled.div``;
@@ -25,8 +31,11 @@ export const Name = styled.p`
   font-weight: 400;
   line-height: 49.37px;
   color: ${({ theme }) => theme.nameColor};
+  @media (max-width: 480px) {
+    font-size: 24px;
+  }
   @media (max-width: 450px) {
-    font-size: ${({ theme }) => theme.fontSize.pMobile};
+    font-size: 22px;
   }
 `;
 

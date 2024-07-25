@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Select } from './components/Select';
 import { Graph } from './components/Graph';
 import { ChartModal } from './components/ChartModal';
-import { getData } from '@utils/utilGetData';
+import { getData } from '@utils/GetData';
 import { ButtonChange } from './styles';
 import { SuccessMessageContext } from '@context/SuccessMessageContext';
 import { Loading } from '@components/Loading/Loading';
-import { handleStartDateChange } from '@utils/utilHandleStartDateChange';
+import { handleStartDateChange } from '@utils/HandleStartDateChange';
 
 export class Timeline extends Component {
   static contextType = SuccessMessageContext;
@@ -53,6 +53,14 @@ export class Timeline extends Component {
     this.setState({ isModalOpen: false });
   };
 
+  handleFirstCurrencyChange = (e) => {
+    this.setState({ firstCurrency: e.target.value });
+  };
+
+  handleSecondCurrencyChange = (value) => {
+    this.setState({ secondCurrency: value });
+  };
+
   render() {
     const {
       isModalOpen,
@@ -75,7 +83,7 @@ export class Timeline extends Component {
       <div>
         <Select
           value={firstCurrency}
-          onChange={(e) => this.setState({ firstCurrency: e.target.value })}
+          onChange={this.handleFirstCurrencyChange}
         />
         <ButtonChange
           onClick={this.handleModalOpen}
@@ -88,9 +96,7 @@ export class Timeline extends Component {
           isOpen={isModalOpen}
           onClose={this.handleModalClose}
           secondCurrency={secondCurrency}
-          setSecondCurrency={(value) =>
-            this.setState({ secondCurrency: value })
-          }
+          setSecondCurrency={this.handleSecondCurrencyChange}
           startDate={startDate}
           handleStartDateChange={handleStartDateChangeWithContext}
           endDate={endDate}

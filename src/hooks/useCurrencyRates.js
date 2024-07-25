@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
-import { useLocalStorage } from './useLocalStorage';
-import { useFetchCurrencyRates } from './useFetchCurrencyRates';
+import { usePersistentState } from './useLocalStorage';
+import { useFetchCurrencyRates } from 'hooks/useFetchCurrencyRates';
 import { INITIAL_CURRENCY_RATES } from '@constants/currencies';
-import { formatDate } from '@utils/utilFormatDate';
+import { formatDate } from '@utils/FormatDate';
 
 export const useCurrencyRates = () => {
-  const [currencyRates, setCurrencyRates] = useLocalStorage(
+  const [currencyRates, setCurrencyRates] = usePersistentState(
     'currentRates',
     INITIAL_CURRENCY_RATES,
   );
-  const [lastUpdate, setLastUpdate] = useLocalStorage('lastUpdate', null);
+  const [lastUpdate, setLastUpdate] = usePersistentState('lastUpdate', null);
   const { data, error, fetchData } = useFetchCurrencyRates();
 
   useEffect(() => {

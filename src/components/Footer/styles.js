@@ -11,8 +11,16 @@ export const FooterContainer = styled.footer`
 export const Container = styled.div`
   padding-left: 131px;
   padding-right: 120px;
-  @media (max-width: 450px) {
+  @media (max-width: 581px) {
+    padding-left: 15px;
+    padding-right: 1px;
+  }
+  @media (max-width: 481px) {
     padding-left: 55px;
+    padding-right: 1px;
+  }
+  @media (max-width: 450px) {
+    padding-left: 25px;
     padding-right: 1px;
   }
 `;
@@ -38,6 +46,13 @@ export const Image = styled.div`
   gap: 20px;
 `;
 
+export const Img = styled.img`
+  height: auto;
+  @media (max-width: 450px) {
+    max-width: 190px; /* Ширина для маленьких экранов */
+  }
+`;
+
 export const Text = styled.p`
   max-width: 482px;
   font-size: 24px;
@@ -47,8 +62,11 @@ export const Text = styled.p`
   @media (max-width: 900px) {
     font-size: 22px;
   }
+  @media (max-width: 670px) {
+    font-size: 18px;
+  }
   @media (max-width: 450px) {
-    font-size: 20px;
+    font-size: 16px;
   }
 `;
 
@@ -70,6 +88,12 @@ export const Title = styled.h2`
     padding-bottom: 15px;
     font-size: ${({ theme }) => theme.fontSize.pMobile};
   }
+  @media (max-width: 670px) {
+    font-size: 18px;
+  }
+  @media (max-width: 450px) {
+    font-size: 14px;
+  }
 `;
 
 export const FooterLink = styled.a`
@@ -86,6 +110,9 @@ export const FooterLink = styled.a`
   @media (max-width: 900px) {
     font-size: 22px;
   }
+  @media (max-width: 670px) {
+    font-size: 18px;
+  }
 `;
 
 export const FooterNote = styled.p`
@@ -98,9 +125,11 @@ export const FooterNote = styled.p`
   margin-top: 54px;
   @media (max-width: 900px) {
     font-size: 22px;
-    margin-right: -120px;
+  }
+  @media (max-width: 670px) {
+    font-size: 16px;
   }
   @media (max-width: 450px) {
-    font-size: 18px;
+    font-size: 14px;
   }
 `;

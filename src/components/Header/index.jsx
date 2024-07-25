@@ -1,5 +1,3 @@
-// Header.js
-
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useCurrencyRates } from '@hooks/useCurrencyRates';

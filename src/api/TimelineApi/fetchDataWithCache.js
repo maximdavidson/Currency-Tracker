@@ -1,4 +1,4 @@
-import { fetchData } from './apiChart';
+import { getCurrencyRates } from './getCurrencyRates';
 
 const getCacheKey = (firstCurrency, secondCurrency, startDate, endDate) => {
   return `${firstCurrency}/${secondCurrency}_${startDate.toISOString()}_${endDate.toISOString()}`;
@@ -22,7 +22,7 @@ export const fetchDataWithCache = async (
     return JSON.parse(cachedData);
   } else {
     try {
-      const data = await fetchData(
+      const data = await getCurrencyRates(
         firstCurrency,
         secondCurrency,
         startDate,

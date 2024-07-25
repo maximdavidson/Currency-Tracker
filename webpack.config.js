@@ -60,20 +60,5 @@ module.exports = {
     new Dotenv({
       path: '.env',
     }),
-    new webpack.DefinePlugin({
-      'process.env.MAPBOX_ACCESS_TOKEN': JSON.stringify(
-        process.env.REACT_APP_MAPBOX_ACCESS_TOKEN,
-      ),
-    }),
-    new webpack.DefinePlugin({
-      'process.env.REACT_APP_COIN_API_KEY': JSON.stringify(
-        process.env.REACT_APP_COIN_API_KEY,
-      ),
-    }),
-    new webpack.DefinePlugin({
-      'process.env.REACT_APP_CURRENCY_API_KEY': JSON.stringify(
-        process.env.REACT_APP_CURRENCY_API_KEY,
-      ),
-    }),
   ],
 };

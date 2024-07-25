@@ -1,11 +1,19 @@
 import styled from 'styled-components';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-export const Container = styled.main`
+export const Container = styled.div`
   padding-left: 131px;
   padding-right: 120px;
+  @media (max-width: 600px) {
+    padding-left: 20px;
+  }
+  @media (max-width: 480px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
   @media (max-width: 450px) {
-    padding-left: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 `;
 
@@ -20,8 +28,11 @@ export const Title = styled.h1`
   }
 `;
 
-export const Image = styled(LazyLoadImage)``;
-
+export const Image = styled(LazyLoadImage)`
+  @media (max-width: 480px) {
+    width: 400px;
+  }
+`;
 export const Cards = styled.div`
   margin-top: 50px;
   display: grid;

@@ -4,8 +4,16 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 export const Container = styled.div`
   padding-left: 131px;
   padding-right: 120px;
+  @media (max-width: 600px) {
+    padding-left: 20px;
+  }
+  @media (max-width: 480px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
   @media (max-width: 450px) {
-    padding-left: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 `;
 
@@ -20,7 +28,11 @@ export const Title = styled.h1`
   }
 `;
 
-export const Image = styled(LazyLoadImage)``;
+export const Image = styled(LazyLoadImage)`
+  @media (max-width: 480px) {
+    width: 400px;
+  }
+`;
 
 export const Cards = styled.div`
   margin-top: ${({ theme }) => theme.spacing.large};
@@ -44,8 +56,11 @@ export const Card = styled.div`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing.medium};
+  @media (max-width: 480px) {
+    width: 430px;
+  }
   @media (max-width: 450px) {
-    width: 460px;
+    width: 360px;
   }
 `;
 

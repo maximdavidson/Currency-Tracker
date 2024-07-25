@@ -1,4 +1,4 @@
-import { checkDateDifference } from './utilCheckDateDifference';
+import { checkDateDifference } from './CheckDateDifference';
 
 export const handleStartDateChange =
   (state, setState, clearMessages) => (e) => {

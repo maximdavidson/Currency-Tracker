@@ -10,6 +10,7 @@ import { BankCard } from '@pages/BankCard';
 import { ErrorBoundary } from '@components/ErrorBoundary/ErrorBoundary';
 import { Footer } from '@components/Footer';
 import { SuccessMessageProvider } from '@context/SuccessMessageContext';
+import { ROUTES } from './constants/routes';
 
 export const App = () => {
   return (
@@ -19,10 +20,10 @@ export const App = () => {
         <Header />
         <SuccessMessageProvider>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/timeline" element={<Timeline />} />
-            <Route path="/bank-card" element={<BankCard />} />
-            <Route path="/contacts" element={<Contacts />} />
+            <Route path={ROUTES.HOME} element={<Home />} />
+            <Route path={ROUTES.TIMELINE} element={<Timeline />} />
+            <Route path={ROUTES.BANK_CARD} element={<BankCard />} />
+            <Route path={ROUTES.CONTACTS} element={<Contacts />} />
           </Routes>
           <Footer />
         </SuccessMessageProvider>

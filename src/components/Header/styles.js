@@ -98,8 +98,7 @@ export const Menu = styled.div`
     justify-content: center;
   `}
   @media (max-width: 450px) {
-    width: 145%;
-    height: 50vh;
+    height: 45vh;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 40px;

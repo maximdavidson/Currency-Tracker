@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const API_KEY = process.env.REACT_APP_COINAPI_KEY;
+const API_KEY = process.env.REACT_APP_COINAPI_API_KEY;
 const BASE_URL = 'https://rest.coinapi.io/v1/exchangerate';
 
-export const fetchData = async (
+export const getCurrencyRates = async (
   firstCurrency,
   secondCurrency,
   startDate,

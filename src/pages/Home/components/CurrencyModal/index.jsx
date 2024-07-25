@@ -10,7 +10,7 @@ import {
   Name,
   Cost,
 } from './styles';
-import { getConvertedAmount } from '@utils/utilGetConvertedAmount';
+import { getConvertedAmount } from '@utils/GetConvertedAmount';
 
 const CurrencyModal = ({ onClose, currency, currencyRates }) => {
   if (!currency) return null;

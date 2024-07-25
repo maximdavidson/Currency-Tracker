@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   margin-left: 200px;
+
+  @media (max-width: 450px) {
+    margin-left: 50px;
+  }
 `;
 
 export const Title = styled.h1``;

@@ -1,7 +1,7 @@
-import { handleStartDateChange } from '@utils/utilHandleStartDateChange';
-import { checkDateDifference } from '@utils/utilCheckDateDifference';
+import { handleStartDateChange } from '@utils/HandleStartDateChange';
+import { checkDateDifference } from '@utils/CheckDateDifference';
 
-jest.mock('@utils/utilCheckDateDifference');
+jest.mock('@utils/CheckDateDifference');
 
 describe('handleStartDateChange', () => {
   let state;
