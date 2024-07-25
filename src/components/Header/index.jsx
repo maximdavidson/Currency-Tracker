@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useCurrencyRates } from '@hooks/useCurrencyRates';
-import { useTheme } from '@theme/ThemeContext';
+import { useTheme } from '@context/ThemeContext';
 import logo from '@assets/logo.png';
 import switchOff from '@assets/switchOff.png';
 import switchOn from '@assets/switchOn.png';
@@ -21,6 +21,7 @@ import {
   BurgerIcon,
   Menu,
   DesktopMenu,
+  Wrap,
 } from './styles';
 import NavBar from '../NavBar/NavBar';
 import { Section } from '../Section';
@@ -56,14 +57,19 @@ export const Header = () => {
           <DesktopMenu>
             <NavBar />
           </DesktopMenu>
-          <Switch onClick={toggleTheme}>
-            <SwitchImg src={isDarkTheme ? switchOff : switchOn} alt="switch" />
-          </Switch>
-          <BurgerIcon
-            src={isOpen ? closeIcon : isDarkTheme ? menuIcon : menuIconDark}
-            alt="Menu"
-            onClick={toggleMenu}
-          />
+          <Wrap>
+            <Switch onClick={toggleTheme}>
+              <SwitchImg
+                src={isDarkTheme ? switchOff : switchOn}
+                alt="switch"
+              />
+            </Switch>
+            <BurgerIcon
+              src={isOpen ? closeIcon : isDarkTheme ? menuIcon : menuIconDark}
+              alt="Menu"
+              onClick={toggleMenu}
+            />
+          </Wrap>
         </HeaderWrapper>
         <Menu isOpen={isOpen}>
           <nav>

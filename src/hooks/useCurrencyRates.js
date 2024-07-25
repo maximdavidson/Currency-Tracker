@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { usePersistentState } from './useLocalStorage';
 import { useFetchCurrencyRates } from 'hooks/useFetchCurrencyRates';
 import { INITIAL_CURRENCY_RATES } from '@constants/currencies';
-import { formatDate } from '@utils/FormatDate';
+import { formatDate } from '@utils/formatDate';
 
 export const useCurrencyRates = () => {
   const [currencyRates, setCurrencyRates] = usePersistentState(

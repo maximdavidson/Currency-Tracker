@@ -1,4 +1,4 @@
-import { getConvertedAmount } from '@utils/GetConvertedAmount';
+import { getConvertedAmount } from '@utils/getConvertedAmount';
 
 const RATES = {
   USD: { value: 1 },

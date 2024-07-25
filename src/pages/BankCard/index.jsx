@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Search } from './components/Search';
 import { Map } from './components/Map';
 import { LocationService } from '@services/LocationService';
-import { generateRandomLocations } from '@utils/GenerateRandomLocation';
+import { generateRandomLocations } from '@utils/generateRandomLocation';
 import { banks } from '@constants/bankData';
 import { Loading } from '@components/Loading/Loading';
 

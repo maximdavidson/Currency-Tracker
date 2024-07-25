@@ -1,4 +1,4 @@
-import { formatDate } from '@utils/FormatDate';
+import { formatDate } from '@utils/formatDate';
 
 describe('formatDate', () => {
   it('should format date string to 12-hour time format', () => {

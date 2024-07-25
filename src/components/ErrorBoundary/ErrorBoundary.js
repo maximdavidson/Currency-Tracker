@@ -11,23 +11,23 @@ export class ErrorBoundary extends React.Component {
     return { hasError: true };
   }
 
-  componentDidCatch(error, errorInfo) {
-    this.logErrorToMyService(error, errorInfo);
-  }
-
-  // eslint-disable-next-line class-methods-use-this, react/no-unused-class-component-methods
-  logErrorToMyService(error, errorInfo) {
+  static logErrorToMyService(error, errorInfo) {
     console.error('Caught an error:', error, errorInfo);
   }
 
+  componentDidCatch(error, errorInfo) {
+    ErrorBoundary.logErrorToMyService(error, errorInfo);
+  }
+
   render() {
-    // eslint-disable-next-line react/destructuring-assignment
-    if (this.state.hasError) {
+    const { hasError } = this.state;
+    const { children } = this.props;
+
+    if (hasError) {
       return <h1>Something went wrong.</h1>;
     }
 
-    // eslint-disable-next-line react/destructuring-assignment
-    return this.props.children;
+    return children;
   }
 }
 

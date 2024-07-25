@@ -1,9 +1,9 @@
-import { fetchDataWithCache } from '@api/TimelineApi/fetchDataWithCache';
+import { fetchCurrencyRatesWithCache } from '@api/TimelineApi/fetchCurrencyRatesWithCache';
 
 export const getData = async (state, setState, addMessage, clearMessages) => {
   const { firstCurrency, secondCurrency, startDate, endDate } = state;
   try {
-    const data = await fetchDataWithCache(
+    const data = await fetchCurrencyRatesWithCache(
       firstCurrency,
       secondCurrency,
       startDate,

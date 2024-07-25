@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Select } from './components/Select';
 import { Graph } from './components/Graph';
 import { ChartModal } from './components/ChartModal';
-import { getData } from '@utils/GetData';
+import { getData } from '@utils/getData';
 import { ButtonChange } from './styles';
 import { SuccessMessageContext } from '@context/SuccessMessageContext';
 import { Loading } from '@components/Loading/Loading';
-import { handleStartDateChange } from '@utils/HandleStartDateChange';
+import { handleStartDateChange } from '@utils/handleStartDateChange';
 
 export class Timeline extends Component {
   static contextType = SuccessMessageContext;

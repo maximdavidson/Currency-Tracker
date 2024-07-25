@@ -1,4 +1,4 @@
-import { checkDateDifference } from '@utils/CheckDateDifference';
+import { checkDateDifference } from '@utils/checkDateDifference';
 
 describe('checkDateDifference', () => {
   it('should return true if the difference is between 30 and 50 days', () => {

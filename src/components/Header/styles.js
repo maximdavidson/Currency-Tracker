@@ -11,6 +11,15 @@ export const HeaderWrapper = styled.div`
     padding-left: 20px;
   }
 `;
+export const Wrap = styled.div`
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 20px;
+  @media (max-width: 450px) {
+    gap: 8px;
+  }
+`;
 
 export const Switch = styled.div`
   padding-right: 20px;
@@ -109,7 +118,6 @@ export const Menu = styled.div`
 export const DesktopMenu = styled.nav`
   display: flex;
   align-items: center;
-  padding-left: 150px;
   @media (max-width: 900px) {
     display: none;
   }

@@ -1,5 +1,5 @@
-import { handleStartDateChange } from '@utils/HandleStartDateChange';
-import { checkDateDifference } from '@utils/CheckDateDifference';
+import { handleStartDateChange } from '@utils/handleStartDateChange';
+import { checkDateDifference } from '@utils/checkDateDifference';
 
 jest.mock('@utils/CheckDateDifference');
 
